@@ -1,0 +1,175 @@
+<?php
+namespace ONEANDONE\Board\Controller;
+
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2016
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+use ONEANDONE\Board\Utility\Breadcrumb;
+
+/**
+ * BoardController
+ */
+class BoardController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
+
+    /**
+     * boardRepository
+     *
+     * @var \ONEANDONE\Board\Domain\Repository\BoardRepository
+     * @inject
+     */
+    protected $boardRepository = NULL;
+
+    /**
+     * topicRepository
+     *
+     * @var \ONEANDONE\Board\Domain\Repository\TopicRepository
+     * @inject
+     */
+    protected $topicRepository = NULL;
+
+    /**
+     * user
+     *
+     * @var \ONEANDONE\Board\Utility\User
+     * @inject
+     */
+    protected $user = NULL;
+
+    /**
+     * breadcrumb
+     *
+     * @var \ONEANDONE\Board\Utility\Breadcrumb
+     * @inject
+     */
+    protected $breadcrumb = NULL;
+
+    public function initializeView()
+    {
+
+        if ($this->user->loggedIn()) {
+            $this->view->assign('user', $this->user);
+        }
+
+        $this->view->assign('breadcrumb', $this->breadcrumb);
+
+    }
+
+    /**
+     * action list
+     *
+     * @return void
+     */
+    public function listAction()
+    {
+
+        $board = NULL;
+        $parentId = 0;
+
+        if ($this->request->hasArgument('board')) {
+
+            $parentId = $this->request->getArgument('board');
+
+            /* @var $board \ONEANDONE\Board\Domain\Model\Board */
+            $board = $this->boardRepository->findByUid($parentId);
+
+            $this->breadcrumb->addElement($board->getTitle(), Breadcrumb::ACTIVE);
+
+        }
+
+        $this->view->assignMultiple([
+            'board' => $board,
+            'boards' => $this->boardRepository->findByParentId($parentId),
+            'topics' => $this->topicRepository->findByBoardId($parentId)
+        ]);
+
+    }
+
+    /**
+     * action new
+     *
+     * @return void
+     */
+    public function newAction()
+    {
+
+        if ($this->request->hasArgument('parentid')) {
+            $this->view->assign('parentid', $this->request->getArgument('parentid'));
+        }
+
+    }
+
+    /**
+     * action create
+     *
+     * @param \ONEANDONE\Board\Domain\Model\Board $newBoard
+     * @return void
+     */
+    public function createAction(\ONEANDONE\Board\Domain\Model\Board $newBoard)
+    {
+        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+        $this->boardRepository->add($newBoard);
+        $this->redirect('list');
+    }
+
+    /**
+     * action edit
+     *
+     * @param \ONEANDONE\Board\Domain\Model\Board $board
+     * @ignorevalidation $board
+     * @return void
+     */
+    public function editAction(\ONEANDONE\Board\Domain\Model\Board $board)
+    {
+        $this->view->assign('board', $board);
+    }
+
+    /**
+     * action update
+     *
+     * @param \ONEANDONE\Board\Domain\Model\Board $board
+     * @return void
+     */
+    public function updateAction(\ONEANDONE\Board\Domain\Model\Board $board)
+    {
+        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+        $this->boardRepository->update($board);
+        $this->redirect('list');
+    }
+
+    /**
+     * action delete
+     *
+     * @param \ONEANDONE\Board\Domain\Model\Board $board
+     * @return void
+     */
+    public function deleteAction(\ONEANDONE\Board\Domain\Model\Board $board)
+    {
+        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+        $this->boardRepository->remove($board);
+        $this->redirect('list');
+    }
+
+}

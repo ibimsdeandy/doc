@@ -1,0 +1,19 @@
+<?php
+if (!defined('TYPO3_MODE')) {
+	die('Access denied.');
+}
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'ONEANDONE.' . $_EXTKEY,
+	'Assistant',
+	array(
+		'Assistant' => 'view',
+		
+	),
+	// non-cacheable actions
+	array(
+		'Assistant' => 'view',
+		
+	)
+);
+

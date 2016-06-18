@@ -1,0 +1,49 @@
+<?php
+namespace ONEANDONE\Board\Validation\Validator;
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+/**
+ * Class UserValidator
+ */
+class UserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
+{
+
+    /**
+     * userRepository
+     *
+     * @var \ONEANDONE\Board\Domain\Repository\UserRepository
+     * @inject
+     */
+    protected $userRepository = NULL;
+
+    /**
+     * user
+     *
+     * @var \ONEANDONE\Board\Utility\User
+     * @inject
+     */
+    protected $user = NULL;
+
+    public function isValid($value)
+    {
+
+        $user = $this->userRepository->findByDefinedIdentifier($value);
+
+        if (is_null($user)) {
+            return true;
+        }
+
+        if ($this->user->getData()->getUid() == $user->getUid()) {
+            return true;
+        }
+
+        if (!is_null($user)) {
+            return $this->addError('Username already taken');
+        }
+
+        return true;
+
+    }
+}
+

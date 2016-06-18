@@ -1,0 +1,95 @@
+<?php
+namespace ONEANDONE\Board\Domain\Repository;
+
+
+    /***************************************************************
+     *
+     *  Copyright notice
+     *
+     *  (c) 2016
+     *
+     *  All rights reserved
+     *
+     *  This script is part of the TYPO3 project. The TYPO3 project is
+     *  free software; you can redistribute it and/or modify
+     *  it under the terms of the GNU General Public License as published by
+     *  the Free Software Foundation; either version 3 of the License, or
+     *  (at your option) any later version.
+     *
+     *  The GNU General Public License can be found at
+     *  http://www.gnu.org/copyleft/gpl.html.
+     *
+     *  This script is distributed in the hope that it will be useful,
+     *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+     *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     *  GNU General Public License for more details.
+     *
+     *  This copyright notice MUST APPEAR in all copies of the script!
+     ***************************************************************/
+
+/**
+ * The repository for Posts
+ */
+class PostRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+{
+
+    /**
+     * userRepository
+     *
+     * @var \ONEANDONE\Board\Domain\Repository\UserRepository
+     * @inject
+     */
+    protected $userRepository = NULL;
+
+    /**
+     * @param int $uid
+     * @return array
+     */
+    public function findByUid($uid)
+    {
+
+        $query = $this->createQuery();
+        $query->matching($query->equals('uid', $uid));
+
+        $result = $query->execute();
+
+        return $this->prepare([$result->getFirst()])[0];
+
+    }
+
+    /**
+     * @param $topicid
+     * @return array
+     */
+    public function findByTopicId($topicid)
+    {
+
+        $query = $this->createQuery();
+        $query->matching($query->equals('topicid', $topicid));
+
+        return $this->prepare($query->execute());
+
+    }
+
+    /**
+     * @param $result
+     * @return array
+     */
+    protected function prepare($result)
+    {
+
+        $posts = [];
+
+        /**
+         * @var $topic \ONEANDONE\Board\Domain\Model\Post
+         */
+        foreach ($result as $post) {
+            $post->setAuthor($this->userRepository->findByUid($post->getAuthor()));
+            $posts[] = $post;
+        }
+
+        return $posts;
+
+    }
+
+}

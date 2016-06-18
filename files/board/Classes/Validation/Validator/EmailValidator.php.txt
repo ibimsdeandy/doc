@@ -1,0 +1,49 @@
+<?php
+namespace ONEANDONE\Board\Validation\Validator;
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+/**
+ * Class EmailValidator
+ */
+class EmailValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
+{
+
+    /**
+     * userRepository
+     *
+     * @var \ONEANDONE\Board\Domain\Repository\UserRepository
+     * @inject
+     */
+    protected $userRepository = NULL;
+
+    /**
+     * user
+     *
+     * @var \ONEANDONE\Board\Utility\User
+     * @inject
+     */
+    protected $user = NULL;
+
+    public function isValid($value)
+    {
+
+        if (!GeneralUtility::validEmail($value)) {
+            return $this->addError('Email is not valid');
+        }
+
+        $user = $this->userRepository->findByDefinedIdentifier($value);
+
+        if (!is_null($user) && $user->getUid() == $this->user->getData()->getUid()) {
+            return true;
+        }
+
+        if (!is_null($user)) {
+            return $this->addError('Email already taken');
+        }
+
+        return true;
+
+    }
+}
+

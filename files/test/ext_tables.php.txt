@@ -1,0 +1,16 @@
+<?php
+if (!defined('TYPO3_MODE')) {
+	die('Access denied.');
+}
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	'ONEANDONE.' . $_EXTKEY,
+	'Messages',
+	'MEssages'
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Test');
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_test_domain_model_message', 'EXT:test/Resources/Private/Language/locallang_csh_tx_test_domain_model_message.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_test_domain_model_message');
+

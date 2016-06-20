@@ -1,0 +1,22 @@
+<?php
+
+class Tx_Community extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin
+{
+
+    public function main()
+    {
+
+        $settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['community']);
+
+        if (isset($settings['LoginPageUid'])) {
+
+            $GLOBALS['TSFE']->additionalHeaderData['community'] .=
+                '<script type="text/javascript">' .
+                'var PageUid = ' . $settings['LoginPageUid'] . ';' .
+                ' </script > ';
+
+        }
+
+    }
+
+}

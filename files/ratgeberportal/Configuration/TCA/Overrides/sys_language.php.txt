@@ -1,0 +1,16 @@
+<?php
+defined('TYPO3_MODE') or die();
+
+$tempColumns = array(
+	'tx_ratgeberportal_hreflang' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_db.xlf:sys_language.tx_ratgeberportal_hreflang',
+		'config' => array(
+			'type' => 'input',	
+			'size' => '30',	
+			'eval' => 'required, trim',
+		)
+	),
+);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('sys_language', $tempColumns);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('sys_language', 'tx_ratgeberportal_hreflang', '', 'after:language_isocode');

@@ -1,0 +1,181 @@
+<?php
+defined('TYPO3_MODE') or die();
+
+// Include new content elements to modWizards
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+    '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $_EXTKEY . '/Configuration/PageTSconfig/RatgeberPortal.ts">'
+);
+
+/* Register for hook to show preview of tt_content element of CType="fluid_styled_slider" in page module
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['tt_content_drawItem']['fluid_styled_slider']
+    = \RatgeberPortal\Hooks\SomeRenderer::class;
+*/
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Ratgeber Portal');
+
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ratgeberportal_domain_model_hreflang', 'EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_csh_tx_ratgeberportal_domain_model_hreflang.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ratgeberportal_domain_model_hreflang');
+$GLOBALS['TCA']['tx_ratgeberportal_domain_model_hreflang'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:tx_ratgeberportal_domain_model_hreflang',
+		'label' => 'url',
+		'label_alt' => 'language',
+		'label_alt_force' => 'true',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+		),
+		'searchFields' => 'url',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Hreflang.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ratgeberportal_domain_model_hreflang.gif'
+	),
+);
+
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ratgeberportal_domain_model_hreflang_extended', 'EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_csh_tx_ratgeberportal_domain_model_hreflang_extended.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ratgeberportal_domain_model_hreflang_extended');
+$GLOBALS['TCA']['tx_ratgeberportal_domain_model_hreflang_extended'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:tx_ratgeberportal_domain_model_hreflang_extended',
+		'label' => 'language',
+		'label_alt' => 'url',
+		'label_alt_force' => 'true',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+		),
+		'searchFields' => 'url',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/HreflangExtended.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ratgeberportal_domain_model_hreflang_extended.gif'
+	),
+);
+
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ratgeberportal_domain_model_language', 'EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_csh_tx_ratgeberportal_domain_model_language.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ratgeberportal_domain_model_language');
+$GLOBALS['TCA']['tx_ratgeberportal_domain_model_language'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:tx_ratgeberportal_domain_model_language',
+		'label' => 'name',
+		'label_alt' => 'hreflang',
+		'label_alt_force' => 'true',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+		),
+		'searchFields' => 'name',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Language.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ratgeberportal_domain_model_language.gif'
+	),
+);
+
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ratgeberportal_domain_model_comment');
+$GLOBALS['TCA']['tx_ratgeberportal_domain_model_comment'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:tx_ratgeberportal_domain_model_comment',
+		'label' => 'subject',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+		),
+		'searchFields' => 'subject,text',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Comment.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ratgeberportal_domain_model_comment.gif'
+	),
+);
+
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ratgeberportal_domain_model_user');
+$GLOBALS['TCA']['tx_ratgeberportal_domain_model_user'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:tx_ratgeberportal_domain_model_user',
+		'label' => 'username',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+		),
+		'searchFields' => 'username',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/User.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ratgeberportal_domain_model_user.gif'
+	),
+);
+
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ratgeberportal_domain_model_like');
+$GLOBALS['TCA']['tx_ratgeberportal_domain_model_like'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:tx_ratgeberportal_domain_model_like',
+		'label' => 'uid',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+		),
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Like.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_ratgeberportal_domain_model_like.gif'
+	),
+);
+
+// Add a flexform to the image_text CType
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+    '',
+    'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/imageText_flexform.xml',
+    'image_text'
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'LatestArticles',
+	'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xlf:plugin.latest'
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'RelatedArticles',
+	'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xlf:plugin.related'
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'PopularArticles',
+	'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xlf:plugin.popular'
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Categories',
+	'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xlf:plugin.categories'
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Comments',
+	'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xlf:plugin.comments'
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Likes',
+	'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xlf:plugin.likes'
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'ArticleMetadata',
+	'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xlf:plugin.articlemetadata'
+);
+
+// Flexform hinzufügen
+$extensionName = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($_EXTKEY);
+$pluginSignature = strtolower($extensionName . '_Categories');
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Categories.xml');

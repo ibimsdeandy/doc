@@ -1,0 +1,226 @@
+<?php
+namespace Igroup\Ratgeberportal\Utility;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2016 Andreas Kraemer <a.kraemer@i-group.de>, igroup Internetagentur
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+
+/**
+ * Hreflang
+ * 
+ * Ansatz: Alle Sprachen durchlaufen und pruefen, ob es einen Hreflang-Datensatz 
+ * auf der Seite dafuer gibt oder ansonsten eine uebersetzte Version der Seite
+ */
+class Hreflang {
+
+	/**
+	 * Returns the URL for the current webpage
+	 *
+	 * @param $content string The content (usually empty)
+	 * @param $conf array The TypoScript configuration
+	 * @return string the hreflang links of this page
+	 */
+	public function getHreflang($content, $conf) {
+		// Get sys languages
+		$allLanguages = $this->getFrontendController()->sys_page->getRecordsByField(
+			'sys_language',
+			'pid', 0,
+			$this->getFrontendController()->sys_page->enableFields('sys_language')
+		);
+
+		$currentLanguage = $this->getFrontendController()->sys_language_uid;
+		// DE as default language
+		$defaultLanguage = array(
+				'uid' => 0,
+				'tx_ratgeberportal_hreflang' => 'de-DE'
+		);
+
+		// add the default at first if the current language is the default one
+		if ($currentLanguage === 0) {
+			array_unshift($allLanguages, $defaultLanguage);
+		} else {
+
+			// we have to place the current language as first entry
+			foreach($allLanguages as $index => $language) {
+				if ((int)$language['uid'] === $currentLanguage) {
+					$languageKey = $index;
+				}
+			}
+
+			$firstLanguage = array_splice($allLanguages, $languageKey, 1);
+			array_unshift($allLanguages, array_shift($firstLanguage));
+
+			array_push($allLanguages, $defaultLanguage);
+
+		}
+
+		// Get disabled languages
+		$disableLanguages = [];
+		if($conf['disableLanguages']) {
+			$disableLanguages = explode(',', $conf['disableLanguages']);
+		}
+
+		// Get the domain list
+		$domainList = [];
+		if($conf['domainList']) {
+			$domainList = explode(',', $conf['domainList']);
+		}
+
+		// ID of current page
+		$pageId = $this->getFrontendController()->id;
+		$hreflang = '';
+		foreach($allLanguages as $language) {
+			// language disabled?
+			if(array_search($language['uid'], $disableLanguages) !== false) {
+				continue;
+			}
+			$url = '';
+			// specific hreflang entry for this page and language?
+			$hreflangRecord = $this->getFrontendController()->sys_page->getRecordsByField(
+				'tx_ratgeberportal_domain_model_hreflang',
+				'page', $pageId,
+				'AND language = ' . $language['uid'] . $this->getFrontendController()->sys_page->enableFields('tx_ratgeberportal_domain_model_hreflang')
+			);
+			if($hreflangRecord[0]['url']) {
+				// Set url to specific entry
+				$url = $hreflangRecord[0]['url'];
+			} else {
+				// check page overlay and create link
+				$pageOverlay = [];
+				if($language['uid'] != 0) {
+					// page_language_overlay existent?
+					$pageOverlay = $this->getFrontendController()->sys_page->getPageOverlay($pageId, $language['uid']);
+				}
+				// Overlay exists or default language (record must exist)?
+				if($pageOverlay || $language['uid'] == 0) {
+					$url = $this->getUrl($pageId, $language['uid'], $domainList);
+				}
+			}
+			if($url) {
+
+				// SPECIAL CASE - USE THE EN_US HREFLANG ALSO FOR THE GENERIC EN HREFLANG
+				if($language['uid'] == 3) {
+					$hreflang .= $this->wrapHreflang($url, 'en');
+				}
+
+				$hreflang .= $this->wrapHreflang($url, $language['tx_ratgeberportal_hreflang']);
+			}
+		}
+
+		// SPECIAL CASE FOR DE-AT, NOT A OWN LANGUAGE ONLY A OWN DOMAIN
+		$at_url = $this->getUrl($pageId, 0, array('ratgeber-at.1and1.org'));
+		// make sure the right url is used
+		$at_url = str_replace('ratgeber.1and1.org', 'ratgeber-at.1and1.org', $at_url);
+		if ($at_url) {
+			$hreflang .= $this->wrapHreflang($at_url, 'de-AT');
+		}
+
+		
+		// specific hreflang entry for this page and language?
+		$hreflangExtended = $this->getFrontendController()->sys_page->getRecordsByField(
+			'tx_ratgeberportal_domain_model_hreflang_extended',
+			'page', $pageId,
+			$this->getFrontendController()->sys_page->enableFields('tx_ratgeberportal_domain_model_hreflang_extended')
+		);
+		if($hreflangExtended) {
+			foreach($hreflangExtended as $he) {
+				// get language
+				$language = $this->getFrontendController()->sys_page->getRecordsByField(
+					'tx_ratgeberportal_domain_model_language',
+					'uid', $he['language'],
+					$this->getFrontendController()->sys_page->enableFields('tx_ratgeberportal_domain_model_language')
+				);
+				// get url
+				$url = $he['url'];
+				// url is empty - use default language, if translation exists
+				if(empty($url)) {
+					$slu = $language[0]['fallback'];
+					// is there an according language record for the fallback language?
+					if($slu > 0) {
+						$pageOverlay = $this->getFrontendController()->sys_page->getPageOverlay($pageId, $slu);
+					}
+					if($slu == 0 || $pageOverlay) {
+						$url = $this->getUrl($pageId, $slu);
+					}
+				}
+				
+				if($url) {
+					$hreflang .= $this->wrapHreflang($url, $language[0]['hreflang']);
+				}
+			}
+		}
+		
+		return $hreflang;
+	}
+	
+	/**
+	 * Wrap url with hreflang tag
+	 * @return string
+	 */
+	protected function wrapHreflang($url, $hreflang) {
+		return '<link rel="alternate" hreflang="' . $hreflang . '" href="' . $url . '">';
+	}
+	
+	/**
+	 * Generate url
+	 * @return string
+	 */
+	protected function getUrl($page, $language, $domainList) {
+
+		// special case for the index page
+		if ($page === 1) {
+
+			$url = 'http://' . $domainList[$language];
+
+		} else {
+
+			$configuration = array(
+					'parameter' => $page,
+					'additionalParams' => '&L=' . $language
+			);
+			$url = $this->getFrontendController()->cObj->typoLink_URL($configuration);
+
+			// it can happen that for the current language no absolute link is generated
+			if ($language == $this->getFrontendController()->sys_language_uid) {
+
+				$position = strpos($url, 'http');
+				if ($position === FALSE || $position != 0) {
+					$url = 'http://' . $domainList[$language] . '/' . $url;
+				}
+			}
+
+		}
+
+		return $url;
+	}
+	
+	/**
+	 * wrapper function for the current TSFE object
+	 * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
+	 */
+	protected function getFrontendController() {
+		return $GLOBALS['TSFE'];
+	}
+}

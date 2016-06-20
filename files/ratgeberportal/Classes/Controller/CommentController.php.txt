@@ -1,0 +1,133 @@
+<?php
+namespace Igroup\Ratgeberportal\Controller;
+
+    /**
+     * *************************************************************
+     *
+     * Copyright notice
+     *
+     * (c) 2016 Andreas Kraemer <a.kraemer@i-group.de>, igroup Internetagentur
+     *
+     * All rights reserved
+     *
+     * This script is part of the TYPO3 project. The TYPO3 project is
+     * free software; you can redistribute it and/or modify
+     * it under the terms of the GNU General Public License as published by
+     * the Free Software Foundation; either version 3 of the License, or
+     * (at your option) any later version.
+     *
+     * The GNU General Public License can be found at
+     * http://www.gnu.org/copyleft/gpl.html.
+     *
+     * This script is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+     * GNU General Public License for more details.
+     *
+     * This copyright notice MUST APPEAR in all copies of the script!
+     * *************************************************************
+     */
+
+/**
+ * CommentController
+ */
+class CommentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
+
+
+    /**
+     * user
+     * @var \ONEANDONE\Community\Utility\Helper
+     * @inject
+     */
+    protected $user = null;
+
+    /**
+     * commentRepository
+     *
+     * @var \Igroup\Ratgeberportal\Domain\Repository\CommentRepository
+     */
+    protected $commentRepository;
+
+    /**
+     * userRepository
+     *
+     * @var \Igroup\Ratgeberportal\Domain\Repository\UserRepository
+     */
+    protected $userRepository;
+
+
+    /**
+     * @param \Igroup\Ratgeberportal\Domain\Repository\CommentRepository $commentRepository
+     */
+    public function injectCommentRepository(\Igroup\Ratgeberportal\Domain\Repository\CommentRepository $commentRepository)
+    {
+        $this->commentRepository = $commentRepository;
+    }
+
+
+    /**
+     * @param \Igroup\Ratgeberportal\Domain\Repository\UserRepository $userRepository
+     */
+    public function injectUserRepository(\Igroup\Ratgeberportal\Domain\Repository\UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
+
+    /**
+     * List comments for current article
+     * If user is logged in show form to add new comment
+     *
+     */
+    public function listAction()
+    {
+        //$userid = \Igroup\Ratgeberportal\Utility\Helper::getUserId();
+        $this->view->assign('user', $this->user->getUser());
+        $comments = $this->commentRepository->findByPid($GLOBALS['TSFE']->id);
+        $this->view->assign('comments', $comments);
+    }
+
+
+    /**
+     * Show form to add comment
+     *
+     * @param \Igroup\Ratgeberportal\Domain\Model\Comment $comment
+     */
+    public function addCommentAjaxAction(\Igroup\Ratgeberportal\Domain\Model\Comment $comment)
+    {
+        $this->addAction($comment);
+        $type = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('type');
+        if (!$type) {
+            // fallback without javascript, type not set
+            $this->redirect('list');
+        } else {
+            $this->view->assign('comment', $comment);
+        }
+    }
+
+    /**
+     * Show additional comments
+     */
+    public function loadAdditionalCommentsAction()
+    {
+        $this->view->assign('comments', $this->commentRepository->findByPid($GLOBALS['TSFE']->id));
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \Igroup\Ratgeberportal\Domain\Model\Comment $comment
+     */
+    public function addAction(\Igroup\Ratgeberportal\Domain\Model\Comment $comment)
+    {
+        $comment->setCrdate(time());
+        $comment->setPid($GLOBALS['TSFE']->id);
+        $comment->setSysLanguageUid($GLOBALS['TSFE']->sys_language_uid);
+        if (!$comment->getSubject()) {
+            $comment->setSubject('');
+        }
+        $this->commentRepository->add($comment);
+    }
+}
+

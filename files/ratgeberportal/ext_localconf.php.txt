@@ -1,0 +1,48 @@
+<?php
+defined('TYPO3_MODE') or die();
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Igroup.' . $_EXTKEY,
+	'LatestArticles',
+	array('Article' => 'list')
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Igroup.' . $_EXTKEY,
+	'RelatedArticles',
+	array('Related' => 'list')
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Igroup.' . $_EXTKEY,
+	'Categories',
+	array('Category' => 'list, show')
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Igroup.' . $_EXTKEY,
+	'PopularArticles',
+	array('Popular' => 'list')
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Igroup.' . $_EXTKEY,
+	'Comments',
+	array('Comment' => 'list,addCommentAjax,add,loadAdditionalComments'),
+	array('Comment' => 'addCommentAjax,loadAdditionalComments')
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Igroup.' . $_EXTKEY,
+	'Likes',
+	array('Like' => 'list,addLikeAjax,addArticleLikeAjax,add,remove'),
+	array('Like' => 'addLikeAjax,addArticleLikeAjax')
+);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Igroup.' . $_EXTKEY,
+	'ArticleMetadata',
+	array('Metadata' => 'show'),
+	array('Metadata' => 'show')
+);
+
+// Add canonical pagepicker to pageOverlayFields and disable fallback
+$GLOBALS['TYPO3_CONF_VARS']['FE']['pageOverlayFields'] .= ',tx_ratgeberportal_canonical';
+
+
+// Add a hook to rewrite all occurrences of 'ratgeber.1and1.org' on every page
+$TYPO3_CONF_VARS['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = 'Igroup\Ratgeberportal\Hook\ContentPostProcessing->postProcess';

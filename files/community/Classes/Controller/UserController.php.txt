@@ -1,0 +1,300 @@
+<?php
+namespace ONEANDONE\Community\Controller;
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2016
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+/**
+ * UserController
+ */
+class UserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
+
+    /**
+     * helper
+     *
+     * @var \ONEANDONE\Community\Utility\Helper
+     * @inject
+     */
+    protected $helper = NULL;
+
+    /**
+     * userRepository
+     *
+     * @var \ONEANDONE\Community\Domain\Repository\UserRepository
+     * @inject
+     */
+    protected $userRepository = NULL;
+
+    /**
+     * board
+     *
+     * @var \ONEANDONE\OneandoneBoard\Utility\Helper
+     * @inject
+     */
+    protected $board = NULL;
+
+    /**
+     * postRepository
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Repository\PostRepository
+     * @inject
+     */
+    protected $postRepository = NULL;
+
+    /**
+     * topicRepository
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Repository\TopicRepository
+     * @inject
+     */
+    protected $topicRepository = NULL;
+
+    /**
+     * action login
+     *
+     * @return void
+     */
+    public function loginAction()
+    {
+
+        if ($this->helper->loggedIn()) {
+            $this->redirect('profile');
+        }
+
+        $this->view->assignMultiple([
+            'LOGIN_API_URL' => $this->helper->getCentralLoginUrl(),
+            'REDIRECT_URL' => $this->helper->getRedirectUrl()
+        ]);
+
+        if ($this->helper->login($this)) {
+            $this->redirect('profile');
+        }
+
+    }
+
+    /**
+     * action register
+     *
+     * @return void
+     */
+    public function registerAction()
+    {
+
+    }
+
+    /**
+     * action avatar
+     *
+     * @return void
+     */
+    public function avatarAction()
+    {
+
+        $this->helper->setTitle('Profile > Avatar');
+
+        if (!$this->helper->loggedIn()) {
+            $this->addFlashMessage('You must be logged in to use this feature.');
+            $this->redirect('login');
+        }
+
+        $this->view->assignMultiple(Array(
+            'user' => $this->getUser()
+        ));
+
+        if (isset($_FILES['tx_community_community']['name'])) {
+
+            $allowedTypes = [
+                'image/png'
+            ];
+
+            $type = $_FILES['tx_community_community']['type']['avatar']['avatar'];
+
+            if (!in_array($type, $allowedTypes)) {
+
+                $this->addFlashMessage('File type is not supported.', null, \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+
+            } else {
+
+                $path = $this->helper->getAvatarPath();
+
+                if (!file_exists($path) && @mkdir($path, 0777, true)) {
+                    return $this->addFlashMessage('fehler');
+                }
+
+                $tmpFile = $_FILES['tx_community_community']['tmp_name']['avatar']['avatar'];
+
+                list($width, $height) = getimagesize($tmpFile);
+
+                if ($width > 128 || $height > 128) {
+                    return $this->addFlashMessage(
+                        'The avatar may not be larger than 128x128 pixels.',
+                        NULL,
+                        \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING
+                    );
+                }
+
+                $path .= '/' . $this->helper->getUser()->getUid() . '.png';
+
+                if (!move_uploaded_file($tmpFile, $path)) {
+                    return $this->addFlashMessage('Could not upload the avatar.', null, \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+                }
+
+                $this->helper->getUser()->setAvatar($path);
+                $this->userRepository->update($this->helper->getUser());
+
+                $this->addFlashMessage('Successfully updated the avatar.', null, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+                $this->redirect('avatar');
+
+            }
+
+        }
+
+    }
+
+    /**
+     * action logout
+     *
+     * @return void
+     */
+    public function logoutAction()
+    {
+        $this->helper->logout();
+        $this->redirectToUri($this->helper->getCentralLoginUrl('logout') . '?redirect_url=' . $this->helper->getRedirectUrl());
+    }
+
+    /**
+     * action profile
+     *
+     * @return void
+     */
+    public function profileAction()
+    {
+
+        $this->helper->setTitle('Profile');
+
+        if (!$this->helper->loggedIn()) {
+            return $this->redirect('login');
+        }
+
+        $user = $this->getUser();
+
+        if (!$user->getUsername()) {
+            $this->addFlashMessage(
+                'You have no username entered',
+                NULL,
+                \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING
+            );
+            $this->redirect('settings');
+        }
+
+        $this->view->assignMultiple(Array(
+            'boardPageUid' => $this->board->getSetting('BoardPageUid'),
+            'posts' => $this->postRepository->findByAuthor($this->helper->getUser()->getUid()),
+            'topics' => $this->topicRepository->findByAuthor($this->helper->getUser()->getUid()),
+            'user' => $user
+        ));
+
+    }
+
+    /**
+     * action ajaxLogin
+     *
+     * @return void
+     */
+    public function ajaxLoginAction()
+    {
+        $this->view->assign('loginPageUid', $this->helper->getSetting('LoginPageUid'));
+        $this->view->assign('user', $this->helper->getUser());
+    }
+
+    /**
+     * action settings
+     *
+     * @param \ONEANDONE\Community\Domain\Model\User $user
+     * @return void
+     */
+    public function settingsAction()
+    {
+
+        $this->helper->setTitle('Settings');
+
+        if (!$this->helper->loggedIn()) {
+            $this->redirect('login');
+        }
+
+        $this->helper->setTitle('User > Settings');
+        $this->view->assign('user', $this->getUser());
+    }
+
+    /**
+     * action update settings
+     *
+     * @param \ONEANDONE\Community\Domain\Model\User $user
+     * @return void
+     */
+    public function updateSettingsAction(\ONEANDONE\Community\Domain\Model\User $user)
+    {
+
+        $valid = true;
+
+        $tmpUser = $this->userRepository->findByUsername($user->getUsername());
+
+        if (count($tmpUser) > 0 && $tmpUser->getUid() != $user->getUid()) {
+            $this->addFlashMessage(
+                'Username is already taken by an other user.',
+                NULL,
+                \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING
+            );
+            $valid = false;
+        }
+
+        if ($valid) {
+
+            $this->addFlashMessage(
+                'Settings successfully updated.',
+                NULL,
+                \TYPO3\CMS\Core\Messaging\AbstractMessage::OK
+            );
+
+            $this->userRepository->update($user);
+
+        }
+
+        $this->redirect('settings');
+
+    }
+
+    protected function getUser()
+    {
+        return $this->userRepository->find(
+            $this->helper->getCustomerId(),
+            $this->helper->getEmail()
+        );
+    }
+
+}

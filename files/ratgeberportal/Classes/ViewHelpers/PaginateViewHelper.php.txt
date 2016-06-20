@@ -1,0 +1,51 @@
+<?php
+namespace TYPO3\Ratgeberportal\ViewHelpers;
+
+class PaginateViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewHelper {
+	
+	/**
+	 *
+	 * @var \TYPO3\Ratgeberportal\Controller\PaginateController
+	 *
+	 */
+	protected $controller;
+
+
+	/**
+	 *
+	 * Injection of widget controller
+	 *
+	 *
+	 *
+	 * @param \TYPO3\Ratgeberportal\Controller\PaginateController $controller        	
+	 *
+	 * @return void
+	 *
+	 */
+	public function injectController(\TYPO3\Ratgeberportal\Controller\PaginateController $controller) {
+		$this->controller = $controller;
+	}
+
+
+	/**
+	 *
+	 * The render method of widget
+	 *
+	 *
+	 *
+	 * @param mixed $objects
+	 *        	\TYPO3\CMS\ExtBase\Persistence\QueryResultInterface,
+	 *        	
+	 *        	\TYPO3\CMS\ExtBase\Persistence\ObjectStorage
+	 *        	
+	 * @param string $as        	
+	 *
+	 * @param array $configuration        	
+	 *
+	 * @return string
+	 *
+	 */
+	public function render($objects, $as, array $configuration = array('itemsPerPage' => 10, 'insertAbove' => false, 'insertBelow' => true, 'maximumNumberOfLinks' => 99)) {
+		return $this->initiateSubRequest();
+	}
+}

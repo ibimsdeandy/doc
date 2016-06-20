@@ -1,0 +1,39 @@
+<?php
+defined('TYPO3_MODE') or die();
+
+call_user_func(function () {
+
+    $languageFilePrefix = 'LLL:EXT:fluid_styled_content/Resources/Private/Language/Database.xlf:';
+    $customLanguageFilePrefix = 'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_be.xlf:';
+    $frontendLanguageFilePrefix = 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:';
+
+    // Add the CType "image_text"
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+        'tt_content',
+        'CType',
+        [
+            'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_be.xlf:wizard.title',
+            'image_text',
+            'content-image'
+        ],
+        'textmedia',
+        'after'
+    );
+
+    $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['image_text'] = $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['textmedia'];
+
+    // Define what fields to display
+    $GLOBALS['TCA']['tt_content']['types']['image_text'] = [
+        'showitem'         => '
+                --palette--;' . $frontendLanguageFilePrefix . 'palette.general;general,
+                --palette--;' . $languageFilePrefix . 'tt_content.palette.mediaAdjustments;mediaAdjustments,
+                pi_flexform,
+            --div--;' . $customLanguageFilePrefix . 'tca.tab.images,
+                 media,
+            --div--;' . $customLanguageFilePrefix . 'tca.tab.text,
+                 header, bodytext;;;richtext[]:rte_transform[mode=ts_css]
+        '
+    ];
+
+});
+

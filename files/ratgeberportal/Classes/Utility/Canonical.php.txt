@@ -1,0 +1,130 @@
+<?php
+namespace Igroup\Ratgeberportal\Utility;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2007-2014 Benni Mack <benni@typo3.org>
+ *  (c) 2016 Andreas Kraemer <a.kraemer@i-group.de>, igroup Internetagentur
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility as GA;
+
+/**
+ * Canonical
+ * 
+ * Adapted from seo_basics (B13\SeoBasics\Service\UrlService), (c) 2007-2014 Benni Mack <benni@typo3.org>
+ */
+class Canonical {
+
+	/**
+	 * Returns the URL for the current webpage
+	 *
+	 * @param $content string The content (usually empty)
+	 * @param $conf array The TypoScript configuration
+	 * @return string the canonical URL of this page
+	 */
+	public function getCanonicalUrl($content, $conf) {
+		//\TYPO3\CMS\Core\Utility\DebugUtility::debug($this->getFrontendController());
+		if($this->getFrontendController()->page['tx_seo_canonicaltag']) {
+			$url = $this->getFrontendController()->page['tx_seo_canonicaltag'];
+		} else {
+			// ID of current page
+			$pageId = $this->getFrontendController()->id;
+			if($this->getFrontendController()->page['tx_ratgeberportal_canonical']) {
+				// ID of canonical page
+				$pageId = $this->getFrontendController()->page['tx_ratgeberportal_canonical'];
+			}
+
+			// Get the domain list
+			$domainList = [];
+			if($conf['domainList']) {
+				$domainList = explode(',', $conf['domainList']);
+			}
+			$language = $this->getFrontendController()->sys_language_uid;
+
+			if ($pageId === 1) {
+				$url = 'http://' . $domainList[$language];
+			}
+			else {
+				// typeNum, not bound to current page
+				$pageType = $this->getFrontendController()->type;
+				$configuration = array(
+						'parameter' => $pageId . ',' . $pageType,
+						'additionalParams' => '&L=' . $language
+				);
+				$url = $this->getFrontendController()->cObj->typoLink_URL($configuration);
+			}
+
+		}
+		if($url) {
+			$urlParts = parse_url($url);
+			$scheme = $urlParts['scheme'];
+			if(isset($conf['useDomain'])) {
+				if($conf['useDomain'] == 'current') {
+					$domain = GA::getIndpEnv('HTTP_HOST');
+				} else {
+					$domain = $conf['useDomain'];
+				}
+				if(!$scheme) {
+					$scheme = 'http';
+				}
+
+				$path = $urlParts['path'];
+				if (strpos($path, '/') !== 0) {
+					$path = '/' . $path;
+				}
+
+    			$url =  $scheme . '://' . $domain . $path;
+			} elseif(empty($urlParts['scheme'])) {
+				$pageWithDomains = $this->getFrontendController()->findDomainRecord();
+				// get first domain record of that page
+				$allDomains = $this->getFrontendController()->sys_page->getRecordsByField(
+					'sys_domain',
+					'pid', $pageWithDomains,
+					'AND redirectTo = ""' . $this->getFrontendController()->sys_page->enableFields('sys_domain'),
+					'',
+					'sorting ASC'
+				);
+				if(!empty($allDomains)) {
+					$domain = (GA::getIndpEnv('TYPO3_SSL') ? 'https://' : 'http://');
+					$domain = $domain . $allDomains[0]['domainName'];
+					$domain = rtrim($domain, '/') . '/' . GA::getIndpEnv('TYPO3_SITE_PATH');
+				} else {
+					$domain = GA::getIndpEnv('TYPO3_SITE_URL');
+				}
+				$url = rtrim($domain, '/') . '/' . ltrim($url, '/');
+			}
+				// remove everything after the ?
+			list($url) = explode('?', $url);
+		}
+		return $url;
+	}
+	
+	/**
+	 * wrapper function for the current TSFE object
+	 * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
+	 */
+	protected function getFrontendController() {
+		return $GLOBALS['TSFE'];
+	}
+}

@@ -1,0 +1,94 @@
+<?php
+namespace Igroup\Ratgeberportal\Hook;
+
+
+class ContentPostProcessing
+{
+    /**
+     * Hook output after rendering the content.
+     *
+     * @param $params object    parameter array
+     * @return void
+     */
+    public function postProcess(&$params) {
+
+        if (\TYPO3\CMS\Core\Utility\GeneralUtility::getApplicationContext()->isProduction()) {
+
+            $pageContent = &$params['pObj']->content;
+
+            // first update the tag cloud for AT - otherwise we would overwrite the hreflang infos
+            if ($_SERVER['HTTP_HOST'] == 'ratgeber-at.1and1.org') {
+                $this->replaceTagsLinksForAT($pageContent);
+            }
+
+            $this->replaceHostname($pageContent);
+            $this->replaceTitleOnTagsPages($pageContent);
+
+        }
+    }
+
+
+    /**
+     * Replace all internal domains with the correct proxy domain name. This is used
+     * for adapting the hreflang and canonical meta data elements.
+     *
+     * @param $pageContent
+     */
+    private function replaceHostname(&$pageContent) {
+
+        $patterns = array(
+            array('search' => 'ratgeber',    'replace' => 'hosting.1und1.de'),
+            array('search' => 'ratgeber-at', 'replace' => 'www.1und1.at'),
+            array('search' => 'ratgeber-uk', 'replace' => 'www.1and1.co.uk'),
+            array('search' => 'ratgeber-es', 'replace' => 'www.1and1.es'),
+            array('search' => 'ratgeber-us', 'replace' => 'www.1and1.com'),
+            array('search' => 'ratgeber-ca', 'replace' => 'www.1and1.ca'),
+            array('search' => 'ratgeber-fr', 'replace' => 'www.1and1.fr'),
+            array('search' => 'ratgeber-mx', 'replace' => 'www.1and1.mx'),
+            array('search' => 'ratgeber-it', 'replace' => 'www.1and1.it')
+        );
+
+        foreach ($patterns as $languageHost) {
+
+            $searchTerm = 'http://' . $languageHost['search'] . '.1and1.org';
+            $replaceTerm = 'https://' . $languageHost['replace'] . '/digitalguide';
+
+            if (strstr($pageContent, $searchTerm)) {
+                $pageContent = str_replace($searchTerm, $replaceTerm, $pageContent);
+            }
+        }
+
+    }
+
+    /**
+     * Update the page title for all tags pages
+     *
+     * @param $pageContent
+     */
+    private function replaceTitleOnTagsPages(&$pageContent) {
+
+        $searchTerm = '1&amp;1 - 1&amp;1</title>';
+        $newTitle = '1&amp;1</title>';
+        if (strstr($pageContent, $searchTerm)) {
+            $pageContent = str_replace($searchTerm, $newTitle, $pageContent);
+        }
+    }
+
+
+    /**
+     * Only needed for AT. Because AT and DE are sharing the same language id we need to
+     * rewrite the absolute generated tag links for AT.
+     *
+     * @param $pageContent
+     */
+    private function replaceTagsLinksForAT(&$pageContent) {
+
+        $searchTerm = 'http://ratgeber.1and1.org/tags';
+        $replaceTerm = 'https://www.1und1.at/digitalguide/tags';
+
+        if (strstr($pageContent, $searchTerm)) {
+            $pageContent = str_replace($searchTerm, $replaceTerm, $pageContent);
+        }
+
+    }
+}

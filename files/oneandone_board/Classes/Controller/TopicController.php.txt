@@ -1,0 +1,312 @@
+<?php
+namespace ONEANDONE\OneandoneBoard\Controller;
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2016
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+/**
+ * TopicController
+ */
+class TopicController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
+
+    /**
+     * topicRepository
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Repository\TopicRepository
+     * @inject
+     */
+    protected $topicRepository = NULL;
+
+    /**
+     * postRepository
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Repository\PostRepository
+     * @inject
+     */
+    protected $postRepository = NULL;
+
+    /**
+     * userRepository
+     *
+     * @var \ONEANDONE\Community\Domain\Repository\UserRepository
+     * @inject
+     */
+    protected $userRepository = NULL;
+
+    /**
+     * helper
+     *
+     * @var \ONEANDONE\Community\Utility\Helper
+     * @inject
+     */
+    protected $helper = NULL;
+
+    /**
+     * boardRepository
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Repository\BoardRepository
+     * @inject
+     */
+    protected $boardRepository = NULL;
+
+    /**
+     * likeRepository
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Repository\LikeRepository
+     * @inject
+     */
+    protected $likeRepository = NULL;
+
+    /**
+     * categoryRepository
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Repository\CategoryRepository
+     * @inject
+     */
+    protected $categoryRepository = NULL;
+
+    /**
+     * general
+     *
+     * @var \ONEANDONE\OneandoneBoard\Utility\Helper
+     * @inject
+     */
+    protected $general = NULL;
+
+    public function initializeView()
+    {
+        $this->view->assign('LoginPageUid', $this->general->getLoginPageUid());
+    }
+
+    /**
+     * action list
+     *
+     * @return void
+     */
+    public function listAction()
+    {
+        $this->view->assign('topics', $this->topicRepository->findAll());
+        $this->view->assign('category', []);
+    }
+
+    /**
+     * action show
+     *
+     * @param \ONEANDONE\OneandoneBoard\Domain\Model\Topic $topic
+     * @return void
+     */
+    public function showAction(\ONEANDONE\OneandoneBoard\Domain\Model\Topic $topic)
+    {
+
+        $this->helper->setTitle($topic->getTitle());
+
+        if ($this->helper->loggedIn() && $topic->getAuthor() == $this->helper->getUser()->getUid()) {
+            $topic->setEditable(true);
+        }
+
+        $tags = [];
+        $tmpTags = explode(',', $topic->getBoardId());
+
+        /** @var  $t \ONEANDONE\OneandoneBoard\Domain\Model\Board */
+        foreach ($tmpTags as $tag) {
+            $t = $this->boardRepository->findByUid($tag);
+            $t->setTopics($this->topicRepository->getByBoardId($t->getUid()));
+            $tags[] = $t;
+        }
+
+        $topic->setTags($tags);
+
+        $x = 0;
+        $posts = [];
+        $tmpPosts = $this->postRepository->getByTopicId($topic->getUid());
+
+        /**
+         * @var $post \ONEANDONE\OneandoneBoard\Domain\Model\Post
+         */
+        foreach ($tmpPosts as $post) {
+
+            if ($this->helper->loggedIn()) {
+
+                if (count($tmpPosts) == 1 && $post->getAuthor()->getUid() == $this->helper->getUser()->getUid() || $x != 0 && $post->getAuthor()->getUid() == $this->helper->getUser()->getUid()) {
+                    $post->setEditable(true);
+                }
+
+                $post->setLikeable($this->likeRepository->hasLiked($this->helper->getUser()->getUid(), $post->getUid()));
+
+            }
+
+            $post->setPosts($this->postRepository->findByPid($post->getUid()));
+
+            $posts[] = $post;
+
+            $x += 1;
+
+        }
+
+        $topics = [];
+
+        $this->view->assignMultiple([
+            'related' => $this->topicRepository->getRelated(),
+            'topic' => $topic,
+            'topics' => $topics,
+            'posts' => $posts,
+            'user' => $this->helper->getUser()
+        ]);
+
+    }
+
+    /**
+     * action new
+     *
+     * @return void
+     */
+    public function newAction()
+    {
+
+        if (!$this->helper->loggedIn()) {
+            $this->redirect('login', 'User', 'Community', NULL, $this->general->getLoginPageUid());
+        }
+
+        $this->view->assignMultiple([
+            'category' => $this->categoryRepository->findByUid($this->request->getArgument('category')),
+            'categories' => $this->categoryRepository->findAll(),
+            'boards' => $this->boardRepository->getByParentId($this->general->getDataFolderId())
+        ]);
+
+    }
+
+    /**
+     * action create
+     *
+     * @param \ONEANDONE\OneandoneBoard\Domain\Model\Topic $newTopic
+     * @return void
+     */
+    public function createAction(\ONEANDONE\OneandoneBoard\Domain\Model\Topic $newTopic)
+    {
+
+        $text = $newTopic->getText();
+
+        $this->addFlashMessage('Successfully started a new discussion.', NULL, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+
+        $newTopic->setPid($this->general->getDataFolderId());
+        $newTopic->setBoardId(join(',', $newTopic->getTags()));
+        $newTopic->setAuthor($this->helper->getUser()->getUid());
+        $newTopic->setText('');
+
+        $this->topicRepository->add($newTopic);
+
+        $persistenceManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
+        $persistenceManager->persistAll();
+
+        $post = new \ONEANDONE\OneandoneBoard\Domain\Model\Post();
+        $post->setPid($this->general->getDataFolderId());
+        $post->setParentId(0);
+        $post->setLikes(0);
+        $post->setAuthor($this->helper->getUser()->getUid());
+        $post->setText($text);
+        $post->setTopicid($newTopic->getUid());
+        $this->postRepository->add($post);
+
+        $this->redirect('show', 'Topic', 'oneandoneboard', [
+            'topic' => $newTopic->getUid()
+        ]);
+    }
+
+    /**
+     * action edit
+     *
+     * @param \ONEANDONE\OneandoneBoard\Domain\Model\Topic $topic
+     * @ignorevalidation $topic
+     * @return void
+     */
+    public function editAction(\ONEANDONE\OneandoneBoard\Domain\Model\Topic $topic)
+    {
+
+        if (!$this->helper->loggedIn()) {
+            $this->redirect('login', 'User', 'Community', NULL, $this->general->getLoginPageUid());
+        }
+
+        $topic->setTags(explode(',', $topic->getBoardId()));
+
+        $this->view->assignMultiple([
+            'topic' => $topic,
+            'boards' => $this->boardRepository->getByParentId($this->general->getDataFolderId())
+        ]);
+
+    }
+
+    /**
+     * action update
+     *
+     * @param \ONEANDONE\OneandoneBoard\Domain\Model\Topic $topic
+     * @return void
+     */
+    public function updateAction(\ONEANDONE\OneandoneBoard\Domain\Model\Topic $topic)
+    {
+
+        if ($this->request->hasArgument('postid')) {
+            $post = $this->postRepository->findByUid($this->request->getArgument('postid'));
+            $post->setText($topic->getText());
+            $this->postRepository->update($post);
+        }
+
+        $this->addFlashMessage('Successfully updated.', NULL, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+
+        $topic->setBoardid(join(',', $topic->getTags()));
+
+        $this->topicRepository->update($topic);
+
+        $this->redirect('show', 'Topic', 'oneandoneboard', array(
+            'topic' => $topic->getUid()
+        ));
+
+    }
+
+    /**
+     * action delete
+     *
+     * @param \ONEANDONE\OneandoneBoard\Domain\Model\Topic $topic
+     * @return void
+     */
+    public function deleteAction(\ONEANDONE\OneandoneBoard\Domain\Model\Topic $topic)
+    {
+
+        foreach ($this->postRepository->getByTopicId($topic->getUid()) as $post) {
+            $this->postRepository->remove($post);
+            foreach ($this->likeRepository->getByPostId($post->getUid()) as $like) {
+                $this->likeRepository->remove($like);
+            }
+        }
+
+        $this->topicRepository->remove($topic);
+
+        $this->redirect('list', 'Board', 'oneandoneboard');
+
+    }
+
+}

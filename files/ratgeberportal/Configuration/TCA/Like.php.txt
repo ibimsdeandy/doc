@@ -1,0 +1,30 @@
+<?php
+defined('TYPO3_MODE') or die();
+
+$GLOBALS['TCA']['tx_ratgeberportal_domain_model_like'] = array(
+	'ctrl' => $GLOBALS['TCA']['tx_ratgeberportal_domain_model_like']['ctrl'],
+	'interface' => array(
+		'showRecordFieldList' => 'user',
+	),
+	'types' => array(
+		'1' => array(
+			'showitem' => 'user;;;;1-1-1',
+		)
+	),
+	'palettes' => array(
+		'1' => array('showitem' => ''),
+	),
+	'columns' => array(
+		'user_id' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_db.xlf:tx_ratgeberportal_domain_model_like.user',
+			'config' => array(
+				'type' => 'select',
+				'renderType' => 'selectSingle',
+				'internal_type' => 'db',
+				'foreign_table' => 'tx_ratgeberportal_domain_model_user',
+				'size' => 1,
+			)
+		),
+	),
+);

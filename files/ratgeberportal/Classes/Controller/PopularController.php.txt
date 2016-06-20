@@ -1,0 +1,66 @@
+<?php
+namespace Igroup\Ratgeberportal\Controller;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2015 Andreas Kraemer <a.kraemer@i-group.de>, igroup Internetagentur
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+/**
+ * PopularController
+ */
+class PopularController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+	
+	/**
+	 * popularArticleRepository
+	 *
+	 * @var \Igroup\Ratgeberportal\Domain\Repository\PopularArticleRepository
+	 * @inject
+	 */
+	protected $popularArticleRepository;
+	
+	/**
+	 * Helper utility class
+	 *
+	 * @var Igroup\Ratgeberportal\Utility\Helper
+	 * @inject
+	 */
+	protected $helperUtility;
+
+	/**
+	 * action list
+	 *
+	 * @return parsed view as html
+	 */
+	public function listAction() {				
+		$shortcuts = $this->popularArticleRepository->findByPid((int) $this->settings['popularArticlesFolder']);
+		$this->popularArticleRepository->addTeaserImages($shortcuts);
+		
+		if($GLOBALS['TSFE']->sys_language_uid > 0) {
+			$translatedShortcuts = $this->helperUtility->translatePages($shortcuts, $GLOBALS['TSFE']->sys_language_uid, true);
+			$this->view->assign('shortcuts', $translatedShortcuts);
+		} else {
+			$this->view->assign('shortcuts', $shortcuts);
+		}
+	}
+}

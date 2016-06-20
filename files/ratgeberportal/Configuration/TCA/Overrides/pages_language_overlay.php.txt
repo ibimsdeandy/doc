@@ -1,0 +1,32 @@
+<?php
+defined('TYPO3_MODE') or die();
+
+// Adds the related field to the pages table
+// https://docs.typo3.org/typo3cms/TCAReference/Reference/Columns/Group/Index.html
+$tempColumns = array(
+	'tx_ratgeberportal_canonical' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_db.xlf:pages.tx_ratgeberportal_canonical',
+		'config' => array(
+			'type' => 'group',
+			'internal_type' => 'db',
+			'allowed' => 'pages',
+			'show_thumbs' => 1,
+			'size' => 1,
+			'max_size' => 1,
+			'minitems' => 0,
+			'maxitems' => 1,
+			'wizards' => array(
+				'suggest' => array(
+					'type' => 'suggest',
+					'default' => array(
+						'searchWholePhrase' => 1,
+						'searchCondition' => 'doktype=1',
+					),
+				)
+			)
+		)
+	),
+);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages_language_overlay', $tempColumns);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages_language_overlay', 'tx_ratgeberportal_canonical', '', 'before:keywords');

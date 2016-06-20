@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<checkstyle version="1.3.0">
+  <file name="oneandone_board/Classes/Domain/Repository/TopicRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="59" severity="error" message="Argument $authorid is missing from the Docblock of findByAuthor" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="59" severity="error" message="No summary for method findByAuthor()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="85" severity="error" message="No summary for method getRelated()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="102" severity="error" message="Argument $category is missing from the Docblock of getByBoardId" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="102" severity="error" message="No summary for method getByBoardId()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="oneandone_board/ext_localconf.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_post.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_like.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_notification.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="community/Classes/Domain/Repository/UserRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="42" severity="error" message="No summary for method find()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="74" severity="error" message="No summary for method findByUsername()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="community/Configuration/TCA/tx_community_domain_model_user.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Classes/Utility/Helper.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="38" severity="error" message="No summary for method getSettings()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="48" severity="error" message="No summary for method getSetting()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="60" severity="error" message="No summary for method getLoginPageUid()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="68" severity="error" message="No summary for method getDataFolderId()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="oneandone_board/Classes/Domain/Repository/PostRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="67" severity="error" message="Argument $pid is missing from the Docblock of findByPid" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="67" severity="error" message="No summary for method findByPid()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="102" severity="error" message="Argument $authorid is missing from the Docblock of findByAuthor" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="102" severity="error" message="No summary for method findByAuthor()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="123" severity="error" message="No summary for method findAll()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="145" severity="error" message="No summary for method getByTopicId()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="oneandone_board/Classes/Controller/LikeController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/ext_tables.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Classes/Controller/BoardController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="135" severity="error" message="No summary for method getDataFolderId()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="oneandone_board/Classes/Domain/Model/Board.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="community/ext_localconf.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Classes/Domain/Repository/LikeRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="43" severity="error" message="Argument $userid is missing from the Docblock of findByUserIddAndPostId" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="43" severity="error" message="Argument $postid is missing from the Docblock of findByUserIddAndPostId" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="43" severity="error" message="No summary for method findByUserIddAndPostId()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="47" severity="error" message="Argument $userid is missing from the Docblock of hasLiked" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="47" severity="error" message="Argument $postid is missing from the Docblock of hasLiked" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="47" severity="error" message="No summary for method hasLiked()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="59" severity="error" message="Argument $postid is missing from the Docblock of getByPostId" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="59" severity="error" message="No summary for method getByPostId()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="community/pi/class.tx_community.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="3" severity="error" message="No summary for class \Tx_Community" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="6" severity="error" message="No summary for method main()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="oneandone_board/Classes/Domain/Repository/BoardRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="54" severity="error" message="Argument $field is missing from the Docblock of getByParentId" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="54" severity="error" message="No summary for method getByParentId()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="oneandone_board/Classes/Domain/Repository/CategoryRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="43" severity="error" message="Argument $boardid is missing from the Docblock of findAll" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="43" severity="error" message="No summary for method findAll()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_category.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_topic.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Classes/Domain/Model/Like.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Classes/Controller/PostController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="80" severity="error" message="No summary for method getDataFolderId()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="183" severity="error" message="Argument $parameters is missing from the Docblock of getBackendTitle" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="183" severity="error" message="No summary for method getBackendTitle()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="community/Classes/Domain/Model/User.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="community/Classes/Utility/Helper.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="9" severity="error" message="No summary for class \ONEANDONE\Community\Utility\Helper" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="31" severity="error" message="No summary for method getUser()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="39" severity="error" message="Argument $otk is missing from the Docblock of getLoginAPIUrl" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="39" severity="error" message="No summary for method getLoginAPIUrl()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="49" severity="error" message="Argument $type is missing from the Docblock of getCentralLoginUrl" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="49" severity="error" message="No summary for method getCentralLoginUrl()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="60" severity="error" message="No summary for method getRedirectUrl()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="71" severity="error" message="No summary for method loggedIn()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="82" severity="error" message="No summary for method getData()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="87" severity="error" message="No summary for method getCustomerId()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="92" severity="error" message="No summary for method getEmail()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="97" severity="error" message="No summary for method getFirstname()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="102" severity="error" message="No summary for method getLastname()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="107" severity="error" message="Argument $data is missing from the Docblock of setData" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="107" severity="error" message="No summary for method setData()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="113" severity="error" message="No summary for method logout()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="118" severity="error" message="Argument $userController is missing from the Docblock of login" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="118" severity="error" message="No summary for method login()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="216" severity="error" message="Argument $title is missing from the Docblock of setTitle" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="216" severity="error" message="No summary for method setTitle()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="224" severity="error" message="No summary for method getSettings()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="234" severity="error" message="No summary for method getSetting()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="20" severity="error" message="No summary for property $data" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="community/ext_tables.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Classes/Domain/Model/Post.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="304" severity="error" message="No summary for method isLikeable()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="314" severity="error" message="Argument $likeable is missing from the Docblock of setLikeable" source="phpDocumentor.file.PPC:ERR-50015"/>
+  </file>
+  <file name="oneandone_board/Classes/Domain/Model/Category.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="community/ext_emconf.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/ext_emconf.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Classes/Controller/TopicController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="101" severity="error" message="No summary for method initializeView()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="oneandone_board/Classes/Domain/Model/Topic.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_board.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="community/Classes/Controller/UserController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="292" severity="error" message="No summary for method getUser()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ratgeberportal/Configuration/TCA/Overrides/pages_language_overlay.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Configuration/TCA/Overrides/tt_content.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Configuration/TCA/Overrides/pages.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Configuration/TCA/Overrides/sys_language.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Configuration/TCA/Like.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Configuration/TCA/User.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Configuration/TCA/Comment.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Configuration/TCA/HreflangExtended.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Configuration/TCA/Language.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Configuration/TCA/Hreflang.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/DataProcessing/ImageTextProcessor.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="62" severity="error" message="No summary for method getOptionsFromFlexFormData()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ratgeberportal/Classes/ViewHelpers/PaginateViewHelper.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="4" severity="error" message="No summary for class \TYPO3\Ratgeberportal\ViewHelpers\PaginateViewHelper" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="11" severity="error" message="No summary for property $controller" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Model/Article.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="134" severity="error" message="No summary for method initializeStorageObjects()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="268" severity="error" message="The type hint of the argument is incorrect for the type definition of the @param tag with argument $categories in setCategories()" source="phpDocumentor.file.PPC:ERR-50016"/>
+    <error line="291" severity="error" message="No summary for method getParentPageTitle()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="295" severity="error" message="Argument $parentPageTitle is missing from the Docblock of setParentPageTitle" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="295" severity="error" message="No summary for method setParentPageTitle()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="357" severity="error" message="No summary for method getIsLikedByUser()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="361" severity="error" message="Argument $isLikedByUser is missing from the Docblock of setIsLikedByUser" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="361" severity="error" message="No summary for method setIsLikedByUser()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Model/Like.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="40" severity="error" message="No summary for method getUserId()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="44" severity="error" message="Argument $userId is missing from the Docblock of setUserId" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="44" severity="error" message="No summary for method setUserId()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Model/User.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Model/Comment.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="108" severity="error" message="No summary for method initializeStorageObjects()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="113" severity="error" message="No summary for method getSysLanguageUid()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="118" severity="error" message="Argument $sysLanguageUid is missing from the Docblock of setSysLanguageUid" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="118" severity="error" message="No summary for method setSysLanguageUid()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="250" severity="error" message="No summary for method getIsLikedByUser()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="255" severity="error" message="Argument $isLikedByUser is missing from the Docblock of setIsLikedByUser" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="255" severity="error" message="No summary for method setIsLikedByUser()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Model/Category.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Model/PopularArticle.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="99" severity="error" message="No summary for method getShortcut()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="103" severity="error" message="Argument $shortcut is missing from the Docblock of setShortcut" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="103" severity="error" message="No summary for method setShortcut()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Model/RelatedArticle.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Repository/LikeRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Repository/UserRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Repository/RelatedArticleRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Repository/PopularArticleRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Repository/ArticleRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Repository/CommentRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="35" severity="error" message="No summary for property $defaultOrderings" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="ratgeberportal/Classes/Domain/Repository/CategoryRepository.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="30" severity="error" message="No summary for class \Igroup\Ratgeberportal\Domain\Repository\CategoryRepository" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="59" severity="error" message="Argument $pages is missing from the Docblock of addToTagArray" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="59" severity="error" message="Argument $category is missing from the Docblock of addToTagArray" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="59" severity="error" message="Argument $page is missing from the Docblock of addToTagArray" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="59" severity="error" message="Argument $tags is missing from the Docblock of addToTagArray" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="59" severity="error" message="No summary for method addToTagArray()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="71" severity="error" message="Argument $a is missing from the Docblock of sortTags" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="71" severity="error" message="Argument $b is missing from the Docblock of sortTags" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="71" severity="error" message="No summary for method sortTags()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ratgeberportal/Classes/Controller/RelatedController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Controller/MetadataController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="52" severity="error" message="No summary for method injectArticleRepository()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="59" severity="error" message="No summary for method injectCommentRepository()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="63" severity="error" message="No summary for method showAction()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ratgeberportal/Classes/Controller/CommentController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="63" severity="error" message="No summary for method injectCommentRepository()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="72" severity="error" message="No summary for method injectUserRepository()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ratgeberportal/Classes/Controller/PopularController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Controller/LikeController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="67" severity="error" message="No summary for method injectCommentRepository()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="74" severity="error" message="No summary for method injectArticleRepository()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="81" severity="error" message="No summary for method injectLikeRepository()" source="phpDocumentor.file.PPC:ERR-50008"/>
+    <error line="89" severity="error" message="No summary for method injectUserRepository()" source="phpDocumentor.file.PPC:ERR-50008"/>
+  </file>
+  <file name="ratgeberportal/Classes/Controller/PaginateController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="5" severity="error" message="No summary for class \TYPO3\Ratgeberportal\Controller\PaginateController" source="phpDocumentor.file.PPC:ERR-50005"/>
+    <error line="7" severity="error" message="No summary for property $displayPrevTenth" source="phpDocumentor.file.PPC:ERR-50007"/>
+    <error line="8" severity="error" message="No summary for property $displayNextTenth" source="phpDocumentor.file.PPC:ERR-50007"/>
+  </file>
+  <file name="ratgeberportal/Classes/Controller/ArticleController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Controller/CategoryController.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="79" severity="error" message="Argument $category is missing from the Docblock of showAction" source="phpDocumentor.file.PPC:ERR-50015"/>
+  </file>
+  <file name="ratgeberportal/Classes/Hook/FsSliderPreviewRenderer.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Hook/ContentPostProcessing.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="5" severity="error" message="No summary for class \Igroup\Ratgeberportal\Hook\ContentPostProcessing" source="phpDocumentor.file.PPC:ERR-50005"/>
+  </file>
+  <file name="ratgeberportal/Classes/Utility/Canonical.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/Classes/Utility/Helper.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="64" severity="error" message="Argument $recursive is missing from the Docblock of getArticleSubpages" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="145" severity="error" message="Argument $returnRecord is missing from the Docblock of recordIsLikedByCurrentUser" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="166" severity="error" message="Argument $shortcut is missing from the Docblock of translatePages" source="phpDocumentor.file.PPC:ERR-50015"/>
+  </file>
+  <file name="ratgeberportal/Classes/Utility/Hreflang.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+    <error line="182" severity="error" message="Argument $url is missing from the Docblock of wrapHreflang" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="182" severity="error" message="Argument $hreflang is missing from the Docblock of wrapHreflang" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="190" severity="error" message="Argument $page is missing from the Docblock of getUrl" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="190" severity="error" message="Argument $language is missing from the Docblock of getUrl" source="phpDocumentor.file.PPC:ERR-50015"/>
+    <error line="190" severity="error" message="Argument $domainList is missing from the Docblock of getUrl" source="phpDocumentor.file.PPC:ERR-50015"/>
+  </file>
+  <file name="ratgeberportal/ext_localconf.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/ext_tables.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+  <file name="ratgeberportal/ext_emconf.php">
+    <error line="0" severity="error" message="No summary was found for this file" source="phpDocumentor.file.PPC:ERR-50000"/>
+  </file>
+</checkstyle>

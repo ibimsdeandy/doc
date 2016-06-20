@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/DanielGoerz.html">\DanielGoerz</a></li>
+                                                        <li><a href="../namespaces/Igroup.html">\Igroup</a></li>
+                                                        <li><a href="../namespaces/ONEANDONE.html">\ONEANDONE</a></li>
+                                                        <li><a href="../namespaces/TYPO3.html">\TYPO3</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">193</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-984919162"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-984919162" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-571018436"></a>
+                                <a href="../namespaces/DanielGoerz.html" style="margin-left: 30px; padding-left: 0">DanielGoerz</a>
+            </div>
+            <div id="namespace-571018436" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1957326853"></a>
+                                <a href="../namespaces/DanielGoerz.FluidStyledSlider.html" style="margin-left: 30px; padding-left: 0">FluidStyledSlider</a>
+            </div>
+            <div id="namespace-1957326853" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-210015880"></a>
+                                <a href="../namespaces/DanielGoerz.FluidStyledSlider.Hooks.html" style="margin-left: 30px; padding-left: 0">Hooks</a>
+            </div>
+            <div id="namespace-210015880" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/DanielGoerz.FluidStyledSlider.Hooks.FsSliderPreviewRenderer.html">FsSliderPreviewRenderer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-813812257"></a>
+                                <a href="../namespaces/Igroup.html" style="margin-left: 30px; padding-left: 0">Igroup</a>
+            </div>
+            <div id="namespace-813812257" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1334425413"></a>
+                                <a href="../namespaces/Igroup.Ratgeberportal.html" style="margin-left: 30px; padding-left: 0">Ratgeberportal</a>
+            </div>
+            <div id="namespace-1334425413" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1110527300"></a>
+                                <a href="../namespaces/Igroup.Ratgeberportal.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-1110527300" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Controller.ArticleController.html">ArticleController</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Controller.CategoryController.html">CategoryController</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Controller.CommentController.html">CommentController</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Controller.LikeController.html">LikeController</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Controller.MetadataController.html">MetadataController</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Controller.PopularController.html">PopularController</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Controller.RelatedController.html">RelatedController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-151359551"></a>
+                                <a href="../namespaces/Igroup.Ratgeberportal.DataProcessing.html" style="margin-left: 30px; padding-left: 0">DataProcessing</a>
+            </div>
+            <div id="namespace-151359551" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.DataProcessing.ImageTextProcessor.html">ImageTextProcessor</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1142654952"></a>
+                                <a href="../namespaces/Igroup.Ratgeberportal.Domain.html" style="margin-left: 30px; padding-left: 0">Domain</a>
+            </div>
+            <div id="namespace-1142654952" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2140475565"></a>
+                                <a href="../namespaces/Igroup.Ratgeberportal.Domain.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-2140475565" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Model.Article.html">Article</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Model.Category.html">Category</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Model.Comment.html">Comment</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Model.Like.html">Like</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Model.PopularArticle.html">PopularArticle</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Model.RelatedArticle.html">RelatedArticle</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Model.User.html">User</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-497302359"></a>
+                                <a href="../namespaces/Igroup.Ratgeberportal.Domain.Repository.html" style="margin-left: 30px; padding-left: 0">Repository</a>
+            </div>
+            <div id="namespace-497302359" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Repository.ArticleRepository.html">ArticleRepository</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Repository.CategoryRepository.html">CategoryRepository</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Repository.CommentRepository.html">CommentRepository</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Repository.LikeRepository.html">LikeRepository</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Repository.PopularArticleRepository.html">PopularArticleRepository</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Repository.RelatedArticleRepository.html">RelatedArticleRepository</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Domain.Repository.UserRepository.html">UserRepository</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1121821149"></a>
+                                <a href="../namespaces/Igroup.Ratgeberportal.Hook.html" style="margin-left: 30px; padding-left: 0">Hook</a>
+            </div>
+            <div id="namespace-1121821149" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Hook.ContentPostProcessing.html">ContentPostProcessing</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1973535865"></a>
+                                <a href="../namespaces/Igroup.Ratgeberportal.Utility.html" style="margin-left: 30px; padding-left: 0">Utility</a>
+            </div>
+            <div id="namespace-1973535865" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Utility.Canonical.html">Canonical</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Utility.Helper.html">Helper</a></li>
+                                                    <li class="class"><a href="../classes/Igroup.Ratgeberportal.Utility.Hreflang.html">Hreflang</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-789320807"></a>
+                                <a href="../namespaces/ONEANDONE.html" style="margin-left: 30px; padding-left: 0">ONEANDONE</a>
+            </div>
+            <div id="namespace-789320807" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-15612524"></a>
+                                <a href="../namespaces/ONEANDONE.Community.html" style="margin-left: 30px; padding-left: 0">Community</a>
+            </div>
+            <div id="namespace-15612524" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-398353266"></a>
+                                <a href="../namespaces/ONEANDONE.Community.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-398353266" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/ONEANDONE.Community.Controller.UserController.html">UserController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-980928221"></a>
+                                <a href="../namespaces/ONEANDONE.Community.Domain.html" style="margin-left: 30px; padding-left: 0">Domain</a>
+            </div>
+            <div id="namespace-980928221" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-649424954"></a>
+                                <a href="../namespaces/ONEANDONE.Community.Domain.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-649424954" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/ONEANDONE.Community.Domain.Model.User.html">User</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-530388212"></a>
+                                <a href="../namespaces/ONEANDONE.Community.Domain.Repository.html" style="margin-left: 30px; padding-left: 0">Repository</a>
+            </div>
+            <div id="namespace-530388212" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/ONEANDONE.Community.Domain.Repository.UserRepository.html">UserRepository</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-54507243"></a>
+                                <a href="../namespaces/ONEANDONE.Community.Utility.html" style="margin-left: 30px; padding-left: 0">Utility</a>
+            </div>
+            <div id="namespace-54507243" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/ONEANDONE.Community.Utility.Helper.html">Helper</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-327632316"></a>
+                                <a href="../namespaces/ONEANDONE.OneandoneBoard.html" style="margin-left: 30px; padding-left: 0">OneandoneBoard</a>
+            </div>
+            <div id="namespace-327632316" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-566531713"></a>
+                                <a href="../namespaces/ONEANDONE.OneandoneBoard.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-566531713" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Controller.BoardController.html">BoardController</a></li>
+                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Controller.LikeController.html">LikeController</a></li>
+                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Controller.PostController.html">PostController</a></li>
+                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Controller.TopicController.html">TopicController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1321073776"></a>
+                                <a href="../namespaces/ONEANDONE.OneandoneBoard.Domain.html" style="margin-left: 30px; padding-left: 0">Domain</a>
+            </div>
+            <div id="namespace-1321073776" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-454710523"></a>
+                                <a href="../namespaces/ONEANDONE.OneandoneBoard.Domain.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-454710523" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Domain.Model.Board.html">Board</a></li>
+                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Domain.Model.Category.html">Category</a></li>
+                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Domain.Model.Like.html">Like</a></li>
+                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Domain.Model.Post.html">Post</a></li>
+                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Domain.Model.Topic.html">Topic</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-184605005"></a>
+                                <a href="../namespaces/ONEANDONE.OneandoneBoard.Domain.Repository.html" style="margin-left: 30px; padding-left: 0">Repository</a>
+            </div>
+            <div id="namespace-184605005" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Domain.Repository.BoardRepository.html">BoardRepository</a></li>
+                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Domain.Repository.CategoryRepository.html">CategoryRepository</a></li>
+                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Domain.Repository.LikeRepository.html">LikeRepository</a></li>
+                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Domain.Repository.PostRepository.html">PostRepository</a></li>
+                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Domain.Repository.TopicRepository.html">TopicRepository</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-193800830"></a>
+                                <a href="../namespaces/ONEANDONE.OneandoneBoard.Utility.html" style="margin-left: 30px; padding-left: 0">Utility</a>
+            </div>
+            <div id="namespace-193800830" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/ONEANDONE.OneandoneBoard.Utility.Helper.html">Helper</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1314588771"></a>
+                                <a href="../namespaces/TYPO3.html" style="margin-left: 30px; padding-left: 0">TYPO3</a>
+            </div>
+            <div id="namespace-1314588771" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-703867841"></a>
+                                <a href="../namespaces/TYPO3.Ratgeberportal.html" style="margin-left: 30px; padding-left: 0">Ratgeberportal</a>
+            </div>
+            <div id="namespace-703867841" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-318276065"></a>
+                                <a href="../namespaces/TYPO3.Ratgeberportal.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-318276065" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/TYPO3.Ratgeberportal.Controller.PaginateController.html">PaginateController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-131141216"></a>
+                                <a href="../namespaces/TYPO3.Ratgeberportal.ViewHelpers.html" style="margin-left: 30px; padding-left: 0">ViewHelpers</a>
+            </div>
+            <div id="namespace-131141216" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/TYPO3.Ratgeberportal.ViewHelpers.PaginateViewHelper.html">PaginateViewHelper</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Tx_Community.html">Tx_Community</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content namespace">
+                    <nav>
+                                                <a href="../namespaces/Igroup.Ratgeberportal.html">\Igroup\Ratgeberportal</a>
+                                            </nav>
+                    <h1><small>\Igroup\Ratgeberportal</small>DataProcessing</h1>
+
+                    
+                    
+                    
+                                        <h2>Classes</h2>
+                    <table class="table table-hover">
+                                            <tr>
+                            <td><a href="../classes/Igroup.Ratgeberportal.DataProcessing.ImageTextProcessor.html">ImageTextProcessor</a></td>
+                            <td><em>This data processor will calculate rows, columns and dimensions for a gallery
+based on several settings and can be used for f.i.</em></td>
+                        </tr>
+                                        </table>
+                                    </div>
+
+                <aside class="span4 detailsbar">
+                    <dl>
+                        <dt>Namespace hierarchy</dt>
+                        <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                    <div class="namespace-wrapper"><a href="../namespaces/default.html">\</a></div>
+                                                            
+                                    <div class="namespace-wrapper"><a href="../namespaces/Igroup.html">\Igroup</a></div>
+                                                            
+                                    <div class="namespace-wrapper"><a href="../namespaces/Igroup.Ratgeberportal.html">\Igroup\Ratgeberportal</a></div>
+                                                                                        <div class="namespace-wrapper">\Igroup\Ratgeberportal\DataProcessing</div>
+                        </dd>
+                    </dl>
+                </aside>
+            </div>
+
+            
+            
+        </div>
+    </section>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/DanielGoerz.html">\DanielGoerz</a></li>
+                                                                            <li><a href="../namespaces/Igroup.html">\Igroup</a></li>
+                                                                            <li><a href="../namespaces/ONEANDONE.html">\ONEANDONE</a></li>
+                                                                            <li><a href="../namespaces/TYPO3.html">\TYPO3</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on June 20th, 2016 at 10:10.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

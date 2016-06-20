@@ -1,0 +1,176 @@
+<?php
+namespace ONEANDONE\Community\Domain\Model;
+
+
+    /***************************************************************
+     *
+     *  Copyright notice
+     *
+     *  (c) 2016
+     *
+     *  All rights reserved
+     *
+     *  This script is part of the TYPO3 project. The TYPO3 project is
+     *  free software; you can redistribute it and/or modify
+     *  it under the terms of the GNU General Public License as published by
+     *  the Free Software Foundation; either version 3 of the License, or
+     *  (at your option) any later version.
+     *
+     *  The GNU General Public License can be found at
+     *  http://www.gnu.org/copyleft/gpl.html.
+     *
+     *  This script is distributed in the hope that it will be useful,
+     *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+     *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     *  GNU General Public License for more details.
+     *
+     *  This copyright notice MUST APPEAR in all copies of the script!
+     ***************************************************************/
+
+/**
+ * User
+ */
+class User extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
+
+    /**
+     * username
+     *
+     * @var string
+     */
+    protected $username = '';
+
+    /**
+     * avatar
+     *
+     * @var string
+     */
+    protected $avatar = '';
+
+    /**
+     * email
+     *
+     * @var string
+     */
+    protected $email = '';
+
+    /**
+     * customerid
+     *
+     * @var int
+     */
+    protected $customerid = 0;
+
+    /**
+     * notification
+     *
+     * @var int
+     */
+    protected $notification = null;
+
+    /**
+     * Returns the username
+     *
+     * @return string $username
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Sets the username
+     *
+     * @param string $username
+     * @return void
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * Returns the avatar
+     *
+     * @return string $avatar
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * Sets the avatar
+     *
+     * @param string $avatar
+     * @return void
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+    }
+
+    /**
+     * Returns the email
+     *
+     * @return string $email
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Sets the email
+     *
+     * @param string $email
+     * @return void
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * Returns the customerid
+     *
+     * @return int $customerid
+     */
+    public function getCustomerid()
+    {
+        return $this->customerid;
+    }
+
+    /**
+     * Sets the customerid
+     *
+     * @param int $customerid
+     * @return void
+     */
+    public function setCustomerid($customerid)
+    {
+        $this->customerid = $customerid;
+    }
+
+    /**
+     * Returns the notification
+     *
+     * @return void
+     */
+    public function getNotification()
+    {
+        return $this->notification;
+    }
+
+    /**
+     * Sets the notification
+     *
+     * @param int $notification
+     * @return void
+     */
+    public function setNotification($notification)
+    {
+        $this->notification = $notification;
+    }
+
+}

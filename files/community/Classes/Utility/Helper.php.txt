@@ -1,0 +1,243 @@
+<?php
+
+namespace ONEANDONE\Community\Utility;
+
+use TYPO3\CMS\Core\FormProtection\Exception;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+class Helper
+{
+
+    /**
+     * userRepository
+     *
+     * @var \ONEANDONE\Community\Domain\Repository\UserRepository
+     * @inject
+     */
+    protected $userRepository = NULL;
+
+    protected $data = [];
+
+    const COOKIE_CUSTOMER_DATA = 'CustomerData';
+
+    const ERROR_PASSWORD_MISSING_PARAM = 'password:MISSING_PARAM';
+    const ERROR_USERNAME_MISSING_PARAM = 'username:MISSING_PARAM';
+    const ERROR_CREDENTIALS_INCORRECT = 'password:CIS.CREDENTIALS_INCORRECT';
+    const ERROR_BRUTEFORCE_DENIAL = 'BRUTEFORCE_DENIAL';
+    const ERROR_GENERIC_ERROR = 'CIS.GENERIC_ERROR';
+    const HEADLESS = 'headless';
+
+    public function getUser()
+    {
+        return $this->userRepository->find(
+            $this->getCustomerId(),
+            $this->getEmail()
+        );
+    }
+
+    public function getLoginAPIUrl($otk)
+    {
+        if ($_SERVER['HTTP_HOST'] == 'localhost') {
+            return 'http://ac1-loginapi.1and1.com.schlund.de/1.1/logins/login/' . $otk . '?redirect_url=' . $this->getRedirectUrl() . '&notification_url=' . $this->getRedirectUrl() . '';
+        }
+
+        return 'https://loginapi.1and1.com/1.1/logins/login/' . $otk . '?redirect_url=' . $this->getRedirectUrl() . '&notification_url=' . $this->getRedirectUrl();
+
+    }
+
+    public function getCentralLoginUrl($type = self::HEADLESS)
+    {
+
+        if ($_SERVER['HTTP_HOST'] == 'localhost') {
+            return 'http://de-login-ac1.com.schlund.de/' . $type;
+        }
+
+        return 'https://account.1and1.com/' . $type;
+
+    }
+
+    public function getRedirectUrl()
+    {
+
+        if ($_SERVER['HTTP_HOST'] == 'localhost') {
+            return 'http://localhost/platform/ratgeber2/index.php?id=552';
+        }
+
+        return 'https://www.1and1.com/cloud-community/login/';
+
+    }
+
+    public function loggedIn()
+    {
+
+        if (count($this->getData()) > 0) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public function getData()
+    {
+        return json_decode($_COOKIE[self::COOKIE_CUSTOMER_DATA]);
+    }
+
+    public function getCustomerId()
+    {
+        return $this->getData()->cid;
+    }
+
+    public function getEmail()
+    {
+        return $this->getData()->email;
+    }
+
+    public function getFirstname()
+    {
+        return $this->getData()->firstname;
+    }
+
+    public function getLastname()
+    {
+        return $this->getData()->lastname;
+    }
+
+    public function setData($data)
+    {
+        $this->data = $data;
+        setcookie(self::COOKIE_CUSTOMER_DATA, json_encode($data), time() + 3600, '/');
+    }
+
+    public function logout()
+    {
+        $this->setData([]);
+    }
+
+    public function login(\ONEANDONE\Community\Controller\UserController $userController)
+    {
+
+        $otk = GeneralUtility::_GET('otk');
+        $errors = GeneralUtility::_GET('errors');
+
+        if (!empty($errors)) {
+
+            $errors = explode('|', $errors);
+
+            if (count($errors) >= 0) {
+
+                foreach ($errors as $error) {
+
+                    if ($error == self::ERROR_GENERIC_ERROR) {
+                        $msg = 'We\'re sorry, the login is currently not available.';
+                    }
+
+                    if ($error == self::ERROR_PASSWORD_MISSING_PARAM) {
+                        $msg = 'Password parameter is mandatory.';
+                    }
+
+                    if ($error == self::ERROR_USERNAME_MISSING_PARAM) {
+                        $msg = 'Username parameter is mandatory.';
+                    }
+
+                    if ($error == self::ERROR_BRUTEFORCE_DENIAL) {
+                        $msg = 'We\'re sorry, the login is currently not available.';
+                    }
+
+                    if ($error == self::ERROR_CREDENTIALS_INCORRECT) {
+                        $msg = 'This login name could not be found or the password is incorrect.';
+                    }
+
+                    $userController->addFlashMessage(
+                        $msg,
+                        NULL,
+                        \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING
+                    );
+
+                }
+
+                return false;
+
+            }
+
+        }
+
+        if (!empty($otk)) {
+
+            $c = curl_init($this->getLoginAPIUrl($otk));
+
+            curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($c, CURLOPT_TIMEOUT, 10);
+            curl_setopt($c, CURLOPT_USERPWD, 'pcisosctypo3:d5TfMSZjmyf683vxWFPY');
+
+            $output = curl_exec($c);
+
+            if (preg_match('#is not valid#', $output) || empty($output) || $output == 'notification_url not given.') {
+                $userController->addFlashMessage('We\'re sorry, the login is currently not available. (#T3)');
+                return false;
+            }
+
+            $xml = new \DOMDocument();
+            $xml->loadXML($output);
+
+            $data = $xml->getElementsByTagName('user')->item(0);
+            $customerId = $data->getElementsByTagName('login')->item(0)->textContent;
+            $email = $data->getElementsByTagName('email')->item(0)->textContent;
+
+            $user = $this->userRepository->find($customerId, $email);
+
+            if (!count($user)) {
+
+                $tmpUser = new \ONEANDONE\Community\Domain\Model\User();
+                $tmpUser->setEmail($email);
+                $tmpUser->setCustomerid($customerId);
+
+                $this->userRepository->add($tmpUser);
+
+                $user = $tmpUser;
+
+            }
+
+            $this->setData([
+                'uid' => $user->getUid(),
+                'cid' => $customerId,
+                'email' => $email
+            ]);
+
+            return true;
+
+        }
+
+        return false;
+
+    }
+
+    public function setTitle($title)
+    {
+        $GLOBALS['TSFE']->page['title'] = $title;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSettings()
+    {
+        $settings = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['community']);
+        return is_array($settings) ? $settings : [];
+    }
+
+    /**
+     * @param $key
+     * @return null
+     */
+    public function getSetting($key)
+    {
+        $settings = $this->getSettings();
+        if (isset($settings[$key])) {
+            return $settings[$key];
+        }
+        return null;
+    }
+
+}

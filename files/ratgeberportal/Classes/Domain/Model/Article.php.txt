@@ -1,0 +1,364 @@
+<?php
+namespace Igroup\Ratgeberportal\Domain\Model;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2015 Andreas Kraemer <a.kraemer@i-group.de>, igroup Internetagentur
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+/**
+ * Article
+ */
+class Article extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+
+	/**
+	 * uid
+	 *
+	 * @var int
+	 */
+	protected $uid = 0;
+
+	/**
+	 * title
+	 *
+	 * @var string
+	 * @validate NotEmpty
+	 */
+	protected $title = '';
+	
+	/**
+	 * title of this articles parent page
+	 * 
+	 * @var string
+	 */
+	protected $parentPageTitle = '';
+
+	/**
+	 * crdate
+	 *
+	 * @var int
+	 */
+	protected $crdate = 0;
+
+	/**
+	 * crdate
+	 *
+	 * @var int
+	 */
+	protected $tstamp = 0;
+
+	/**
+	 * abstract
+	 *
+	 * @var string
+	 */
+	protected $abstract = '';
+	
+	/**
+	 * categories
+	 *
+	 * @lazy
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<Igroup\Ratgeberportal\Domain\Model\Category>
+	 */
+	protected $categories = NULL;
+
+	/**
+	 * txHiteasermenuImages
+	 *
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	protected $txHiteasermenuImages = NULL;
+	
+	/**
+	 * txRatgeberportalLikes
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Igroup\Ratgeberportal\Domain\Model\Like>
+	 */
+	protected $txRatgeberportalLikes = NULL;
+	
+	/**
+	 * txRatgeberportalAllowcomments
+	 *
+	 * @var int
+	 */
+	protected $txRatgeberportalAllowcomments = 0;
+	
+	/**
+	 * isLikedByUser
+	 * @var bool
+	 * @transient
+	 */
+	protected $isLikedByUser = FALSE;
+
+	/**
+	 * __construct
+	 */
+	public function __construct() {
+		//Do not remove the next line: It would break the functionality
+		$this->initStorageObjects();
+	}
+
+	/**
+	 * Initializes all ObjectStorage properties
+	 * Do not modify this method!
+	 * It will be rewritten on each save in the extension builder
+	 * You may modify the constructor of this class instead
+	 *
+	 * @return void
+	 */
+	protected function initStorageObjects() {
+		$this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->txRatgeberportalLikes = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+	
+	public function initializeStorageObjects() {
+		$this->initStorageObjects();
+	}
+
+	/**
+	 * Returns the uid
+	 *
+	 * @return int $uid
+	 */
+	public function getUid() {
+		return $this->uid;
+	}
+
+	/**
+	 * Sets the uid
+	 *
+	 * @param int $uid
+	 * @return void
+	 */
+	public function setUid($uid) {
+		$this->uid = $uid;
+	}
+
+	/**
+	 * Returns the title
+	 *
+	 * @return string $title
+	 */
+	public function getTitle() {
+		return $this->title;
+	}
+
+	/**
+	 * Sets the title
+	 *
+	 * @param string $title
+	 * @return void
+	 */
+	public function setTitle($title) {
+		$this->title = $title;
+	}
+
+	/**
+	 * Returns the crdate
+	 *
+	 * @return int $crdate
+	 */
+	function getCrdate() {
+		return $this->crdate;
+	}
+
+	/**
+	 * Returns the tstamp
+	 *
+	 * @return int $tstamp
+	 */
+	function getTstamp() {
+		return $this->tstamp;
+	}
+	
+	/**
+	 * Sets the crdate
+	 *
+	 * @param int $crdate
+	 * @return void
+	 */	
+	function setCrdate($crdate) {
+		$this->crdate = $crdate;
+	}
+
+	/**
+	 * Sets the tstamp
+	 *
+	 * @param int $tstamp
+	 * @return void
+	 */
+	function setTstamp($tstamp) {
+		$this->tstamp = $tstamp;
+	}
+		
+	/**
+	 * Returns the abstract
+	 *
+	 * @return string $abstract
+	 */
+	public function getAbstract() {
+		return $this->abstract;
+	}
+
+	/**
+	 * Sets the abstract
+	 *
+	 * @param string $abstract
+	 * @return void
+	 */
+	public function setAbstract($abstract) {
+		$this->abstract = $abstract;
+	}
+
+	/**
+	 * Adds a Category
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+	 * @return void
+	 */
+	public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category) {
+		$this->categories->attach($category);
+	}
+
+	/**
+	 * Removes a Category
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove The Article to be removed
+	 * @return void
+	 */
+	public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $categoryToRemove) {
+		$this->categories->detach($categoryToRemove);
+	}
+
+	/**
+	 * Returns the Category
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $category
+	 */
+	public function getCategories() {
+		return $this->categories;
+	}
+
+	/**
+	 * Sets the Category
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $category
+	 * @return void
+	 */
+	public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories) {
+		$this->categories = $categories;
+	}
+
+	/**
+	 * Returns the txHiteasermenuImages
+	 *
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $txHiteasermenuImages
+	 */
+	public function getTxHiteasermenuImages() {
+		return $this->txHiteasermenuImages;
+	}
+
+	/**
+	 * Sets the txHiteasermenuImages
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $txHiteasermenuImages
+	 * @return void
+	 */
+	public function setTxHiteasermenuImages(\TYPO3\CMS\Extbase\Domain\Model\FileReference $txHiteasermenuImages) {
+		$this->txHiteasermenuImages = $txHiteasermenuImages;
+	}
+	
+	function getParentPageTitle() {
+		return $this->parentPageTitle;
+	}
+
+	function setParentPageTitle($parentPageTitle) {
+		$this->parentPageTitle = $parentPageTitle;
+	}
+	
+	/**
+	 * Returns the txRatgeberportalLikes
+	 *
+	 * @return int $txRatgeberportalLikes
+	 */
+	function getLikes() {
+		return $this->txRatgeberportalLikes;
+	}
+	
+	/**
+	 * Sets the txRatgeberportalLikes
+	 *
+	 * @param int $txRatgeberportalLikes
+	 * @return void
+	 */	
+	function setLikes($txRatgeberportalLikes) {
+		$this->txRatgeberportalLikes = $txRatgeberportalLikes;
+	}
+	
+	/**
+	 * Adds a Like
+	 * 
+	 * @param \Igroup\Ratgeberportal\Domain\Model\Like $like
+	 * @return void
+	 */
+	public function addLike(\Igroup\Ratgeberportal\Domain\Model\Like $like) {
+		$this->txRatgeberportalLikes->attach($like);
+	}
+
+	/**
+	 * Removes a Like
+	 * 
+	 * @param \Igroup\Ratgeberportal\Domain\Model\Like $likeToRemove The Like to be removed
+	 * @return void
+	 */
+	public function removeLike(\Igroup\Ratgeberportal\Domain\Model\Like $likeToRemove) {
+		$this->txRatgeberportalLikes->detach($likeToRemove);
+	}
+
+	/**
+	 * Returns txRatgeberportalAllowcomments
+	 *
+	 * @return int $txRatgeberportalAllowcomments
+	 */
+	public function getTxRatgeberportalAllowcomments() {
+		return $this->txRatgeberportalAllowcomments;
+	}
+
+	/**
+	 * Set txRatgeberportalAllowcomments
+	 *
+	 * @param int $txRatgeberportalAllowcomments
+	 * @return void
+	 */
+	public function setTxRatgeberportalAllowcomments($txRatgeberportalAllowcomments) {
+		$this->txRatgeberportalAllowcomments = $txRatgeberportalAllowcomments;
+	}
+	
+	function getIsLikedByUser() {
+		return $this->isLikedByUser;
+	}
+
+	function setIsLikedByUser($isLikedByUser) {
+		$this->isLikedByUser = $isLikedByUser;
+	}
+}

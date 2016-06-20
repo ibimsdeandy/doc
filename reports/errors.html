@@ -1,0 +1,2779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>     &raquo; Compilation errors
+</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/DanielGoerz.html">\DanielGoerz</a></li>
+                                                        <li><a href="../namespaces/Igroup.html">\Igroup</a></li>
+                                                        <li><a href="../namespaces/ONEANDONE.html">\ONEANDONE</a></li>
+                                                        <li><a href="../namespaces/TYPO3.html">\TYPO3</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">193</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">2</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">Navigation</li>
+                                                                            <li><a href="#oneandone_board/Classes/Domain/Repository/TopicRepository.php"><i class="icon-file"></i> oneandone_board/Classes/Domain/Repository/TopicRepository.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/ext_localconf.php"><i class="icon-file"></i> oneandone_board/ext_localconf.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_post.php"><i class="icon-file"></i> oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_post.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_like.php"><i class="icon-file"></i> oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_like.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_notification.php"><i class="icon-file"></i> oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_notification.php</a></li>
+                                                                                                    <li><a href="#community/Classes/Domain/Repository/UserRepository.php"><i class="icon-file"></i> community/Classes/Domain/Repository/UserRepository.php</a></li>
+                                                                                                    <li><a href="#community/Configuration/TCA/tx_community_domain_model_user.php"><i class="icon-file"></i> community/Configuration/TCA/tx_community_domain_model_user.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Utility/Helper.php"><i class="icon-file"></i> oneandone_board/Classes/Utility/Helper.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Domain/Repository/PostRepository.php"><i class="icon-file"></i> oneandone_board/Classes/Domain/Repository/PostRepository.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Controller/LikeController.php"><i class="icon-file"></i> oneandone_board/Classes/Controller/LikeController.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/ext_tables.php"><i class="icon-file"></i> oneandone_board/ext_tables.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Controller/BoardController.php"><i class="icon-file"></i> oneandone_board/Classes/Controller/BoardController.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Domain/Model/Board.php"><i class="icon-file"></i> oneandone_board/Classes/Domain/Model/Board.php</a></li>
+                                                                                                    <li><a href="#community/ext_localconf.php"><i class="icon-file"></i> community/ext_localconf.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Domain/Repository/LikeRepository.php"><i class="icon-file"></i> oneandone_board/Classes/Domain/Repository/LikeRepository.php</a></li>
+                                                                                                    <li><a href="#community/pi/class.tx_community.php"><i class="icon-file"></i> community/pi/class.tx_community.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Domain/Repository/BoardRepository.php"><i class="icon-file"></i> oneandone_board/Classes/Domain/Repository/BoardRepository.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Domain/Repository/CategoryRepository.php"><i class="icon-file"></i> oneandone_board/Classes/Domain/Repository/CategoryRepository.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_category.php"><i class="icon-file"></i> oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_category.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_topic.php"><i class="icon-file"></i> oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_topic.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Domain/Model/Like.php"><i class="icon-file"></i> oneandone_board/Classes/Domain/Model/Like.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Controller/PostController.php"><i class="icon-file"></i> oneandone_board/Classes/Controller/PostController.php</a></li>
+                                                                                                    <li><a href="#community/Classes/Domain/Model/User.php"><i class="icon-file"></i> community/Classes/Domain/Model/User.php</a></li>
+                                                                                                    <li><a href="#community/Classes/Utility/Helper.php"><i class="icon-file"></i> community/Classes/Utility/Helper.php</a></li>
+                                                                                                    <li><a href="#community/ext_tables.php"><i class="icon-file"></i> community/ext_tables.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Domain/Model/Post.php"><i class="icon-file"></i> oneandone_board/Classes/Domain/Model/Post.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Domain/Model/Category.php"><i class="icon-file"></i> oneandone_board/Classes/Domain/Model/Category.php</a></li>
+                                                                                                    <li><a href="#community/ext_emconf.php"><i class="icon-file"></i> community/ext_emconf.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/ext_emconf.php"><i class="icon-file"></i> oneandone_board/ext_emconf.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Controller/TopicController.php"><i class="icon-file"></i> oneandone_board/Classes/Controller/TopicController.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Classes/Domain/Model/Topic.php"><i class="icon-file"></i> oneandone_board/Classes/Domain/Model/Topic.php</a></li>
+                                                                                                    <li><a href="#oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_board.php"><i class="icon-file"></i> oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_board.php</a></li>
+                                                                                                    <li><a href="#community/Classes/Controller/UserController.php"><i class="icon-file"></i> community/Classes/Controller/UserController.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Configuration/TCA/Overrides/pages_language_overlay.php"><i class="icon-file"></i> ratgeberportal/Configuration/TCA/Overrides/pages_language_overlay.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Configuration/TCA/Overrides/tt_content.php"><i class="icon-file"></i> ratgeberportal/Configuration/TCA/Overrides/tt_content.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Configuration/TCA/Overrides/pages.php"><i class="icon-file"></i> ratgeberportal/Configuration/TCA/Overrides/pages.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Configuration/TCA/Overrides/sys_language.php"><i class="icon-file"></i> ratgeberportal/Configuration/TCA/Overrides/sys_language.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Configuration/TCA/Like.php"><i class="icon-file"></i> ratgeberportal/Configuration/TCA/Like.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Configuration/TCA/User.php"><i class="icon-file"></i> ratgeberportal/Configuration/TCA/User.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Configuration/TCA/Comment.php"><i class="icon-file"></i> ratgeberportal/Configuration/TCA/Comment.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Configuration/TCA/HreflangExtended.php"><i class="icon-file"></i> ratgeberportal/Configuration/TCA/HreflangExtended.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Configuration/TCA/Language.php"><i class="icon-file"></i> ratgeberportal/Configuration/TCA/Language.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Configuration/TCA/Hreflang.php"><i class="icon-file"></i> ratgeberportal/Configuration/TCA/Hreflang.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/DataProcessing/ImageTextProcessor.php"><i class="icon-file"></i> ratgeberportal/Classes/DataProcessing/ImageTextProcessor.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/ViewHelpers/PaginateViewHelper.php"><i class="icon-file"></i> ratgeberportal/Classes/ViewHelpers/PaginateViewHelper.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Model/Article.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Model/Article.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Model/Like.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Model/Like.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Model/User.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Model/User.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Model/Comment.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Model/Comment.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Model/Category.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Model/Category.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Model/PopularArticle.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Model/PopularArticle.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Model/RelatedArticle.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Model/RelatedArticle.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Repository/LikeRepository.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Repository/LikeRepository.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Repository/UserRepository.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Repository/UserRepository.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Repository/RelatedArticleRepository.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Repository/RelatedArticleRepository.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Repository/PopularArticleRepository.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Repository/PopularArticleRepository.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Repository/ArticleRepository.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Repository/ArticleRepository.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Repository/CommentRepository.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Repository/CommentRepository.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Domain/Repository/CategoryRepository.php"><i class="icon-file"></i> ratgeberportal/Classes/Domain/Repository/CategoryRepository.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Controller/RelatedController.php"><i class="icon-file"></i> ratgeberportal/Classes/Controller/RelatedController.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Controller/MetadataController.php"><i class="icon-file"></i> ratgeberportal/Classes/Controller/MetadataController.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Controller/CommentController.php"><i class="icon-file"></i> ratgeberportal/Classes/Controller/CommentController.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Controller/PopularController.php"><i class="icon-file"></i> ratgeberportal/Classes/Controller/PopularController.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Controller/LikeController.php"><i class="icon-file"></i> ratgeberportal/Classes/Controller/LikeController.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Controller/PaginateController.php"><i class="icon-file"></i> ratgeberportal/Classes/Controller/PaginateController.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Controller/ArticleController.php"><i class="icon-file"></i> ratgeberportal/Classes/Controller/ArticleController.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Controller/CategoryController.php"><i class="icon-file"></i> ratgeberportal/Classes/Controller/CategoryController.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Hook/FsSliderPreviewRenderer.php"><i class="icon-file"></i> ratgeberportal/Classes/Hook/FsSliderPreviewRenderer.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Hook/ContentPostProcessing.php"><i class="icon-file"></i> ratgeberportal/Classes/Hook/ContentPostProcessing.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Utility/Canonical.php"><i class="icon-file"></i> ratgeberportal/Classes/Utility/Canonical.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Utility/Helper.php"><i class="icon-file"></i> ratgeberportal/Classes/Utility/Helper.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/Classes/Utility/Hreflang.php"><i class="icon-file"></i> ratgeberportal/Classes/Utility/Hreflang.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/ext_localconf.php"><i class="icon-file"></i> ratgeberportal/ext_localconf.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/ext_tables.php"><i class="icon-file"></i> ratgeberportal/ext_tables.php</a></li>
+                                                                                                    <li><a href="#ratgeberportal/ext_emconf.php"><i class="icon-file"></i> ratgeberportal/ext_emconf.php</a></li>
+                                                                    </ul>
+        </div>
+
+        <div class="span10 offset2">
+            <ul class="breadcrumb">
+                <li><a href="../"><i class="icon-remove-sign"></i></a><span class="divider">\</span></li>
+                <li>Compilation Errors</li>
+            </ul>
+
+            
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Domain/Repository/TopicRepository.php" id="oneandone_board/Classes/Domain/Repository/TopicRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Domain/Repository/TopicRepository.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>59</td>
+                                        <td>Argument $authorid is missing from the Docblock of findByAuthor</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>59</td>
+                                        <td>No summary for method findByAuthor()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>85</td>
+                                        <td>No summary for method getRelated()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>102</td>
+                                        <td>Argument $category is missing from the Docblock of getByBoardId</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>102</td>
+                                        <td>No summary for method getByBoardId()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/ext_localconf.php" id="oneandone_board/ext_localconf.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/ext_localconf.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_post.php" id="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_post.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_post.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_like.php" id="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_like.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_like.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_notification.php" id="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_notification.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_notification.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="community/Classes/Domain/Repository/UserRepository.php" id="community/Classes/Domain/Repository/UserRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            community/Classes/Domain/Repository/UserRepository.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>42</td>
+                                        <td>No summary for method find()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>74</td>
+                                        <td>No summary for method findByUsername()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="community/Configuration/TCA/tx_community_domain_model_user.php" id="community/Configuration/TCA/tx_community_domain_model_user.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            community/Configuration/TCA/tx_community_domain_model_user.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Utility/Helper.php" id="oneandone_board/Classes/Utility/Helper.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Utility/Helper.php
+                            <small style="float: right;padding-right: 10px;">5</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>38</td>
+                                        <td>No summary for method getSettings()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>48</td>
+                                        <td>No summary for method getSetting()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>60</td>
+                                        <td>No summary for method getLoginPageUid()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>68</td>
+                                        <td>No summary for method getDataFolderId()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Domain/Repository/PostRepository.php" id="oneandone_board/Classes/Domain/Repository/PostRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Domain/Repository/PostRepository.php
+                            <small style="float: right;padding-right: 10px;">7</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>67</td>
+                                        <td>Argument $pid is missing from the Docblock of findByPid</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>67</td>
+                                        <td>No summary for method findByPid()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>102</td>
+                                        <td>Argument $authorid is missing from the Docblock of findByAuthor</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>102</td>
+                                        <td>No summary for method findByAuthor()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>123</td>
+                                        <td>No summary for method findAll()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>145</td>
+                                        <td>No summary for method getByTopicId()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Controller/LikeController.php" id="oneandone_board/Classes/Controller/LikeController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Controller/LikeController.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/ext_tables.php" id="oneandone_board/ext_tables.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/ext_tables.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Controller/BoardController.php" id="oneandone_board/Classes/Controller/BoardController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Controller/BoardController.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>135</td>
+                                        <td>No summary for method getDataFolderId()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Domain/Model/Board.php" id="oneandone_board/Classes/Domain/Model/Board.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Domain/Model/Board.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="community/ext_localconf.php" id="community/ext_localconf.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            community/ext_localconf.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Domain/Repository/LikeRepository.php" id="oneandone_board/Classes/Domain/Repository/LikeRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Domain/Repository/LikeRepository.php
+                            <small style="float: right;padding-right: 10px;">9</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>43</td>
+                                        <td>Argument $userid is missing from the Docblock of findByUserIddAndPostId</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>43</td>
+                                        <td>Argument $postid is missing from the Docblock of findByUserIddAndPostId</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>43</td>
+                                        <td>No summary for method findByUserIddAndPostId()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>47</td>
+                                        <td>Argument $userid is missing from the Docblock of hasLiked</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>47</td>
+                                        <td>Argument $postid is missing from the Docblock of hasLiked</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>47</td>
+                                        <td>No summary for method hasLiked()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>59</td>
+                                        <td>Argument $postid is missing from the Docblock of getByPostId</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>59</td>
+                                        <td>No summary for method getByPostId()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="community/pi/class.tx_community.php" id="community/pi/class.tx_community.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            community/pi/class.tx_community.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>3</td>
+                                        <td>No summary for class \Tx_Community</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for method main()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Domain/Repository/BoardRepository.php" id="oneandone_board/Classes/Domain/Repository/BoardRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Domain/Repository/BoardRepository.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>54</td>
+                                        <td>Argument $field is missing from the Docblock of getByParentId</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>54</td>
+                                        <td>No summary for method getByParentId()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Domain/Repository/CategoryRepository.php" id="oneandone_board/Classes/Domain/Repository/CategoryRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Domain/Repository/CategoryRepository.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>43</td>
+                                        <td>Argument $boardid is missing from the Docblock of findAll</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>43</td>
+                                        <td>No summary for method findAll()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_category.php" id="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_category.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_category.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_topic.php" id="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_topic.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_topic.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Domain/Model/Like.php" id="oneandone_board/Classes/Domain/Model/Like.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Domain/Model/Like.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Controller/PostController.php" id="oneandone_board/Classes/Controller/PostController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Controller/PostController.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>80</td>
+                                        <td>No summary for method getDataFolderId()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>183</td>
+                                        <td>Argument $parameters is missing from the Docblock of getBackendTitle</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>183</td>
+                                        <td>No summary for method getBackendTitle()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="community/Classes/Domain/Model/User.php" id="community/Classes/Domain/Model/User.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            community/Classes/Domain/Model/User.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="community/Classes/Utility/Helper.php" id="community/Classes/Utility/Helper.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            community/Classes/Utility/Helper.php
+                            <small style="float: right;padding-right: 10px;">24</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for class \ONEANDONE\Community\Utility\Helper</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>31</td>
+                                        <td>No summary for method getUser()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>39</td>
+                                        <td>Argument $otk is missing from the Docblock of getLoginAPIUrl</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>39</td>
+                                        <td>No summary for method getLoginAPIUrl()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>49</td>
+                                        <td>Argument $type is missing from the Docblock of getCentralLoginUrl</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>49</td>
+                                        <td>No summary for method getCentralLoginUrl()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>60</td>
+                                        <td>No summary for method getRedirectUrl()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>71</td>
+                                        <td>No summary for method loggedIn()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>82</td>
+                                        <td>No summary for method getData()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>87</td>
+                                        <td>No summary for method getCustomerId()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>92</td>
+                                        <td>No summary for method getEmail()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>97</td>
+                                        <td>No summary for method getFirstname()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>102</td>
+                                        <td>No summary for method getLastname()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>107</td>
+                                        <td>Argument $data is missing from the Docblock of setData</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>107</td>
+                                        <td>No summary for method setData()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>113</td>
+                                        <td>No summary for method logout()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>118</td>
+                                        <td>Argument $userController is missing from the Docblock of login</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>118</td>
+                                        <td>No summary for method login()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>216</td>
+                                        <td>Argument $title is missing from the Docblock of setTitle</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>216</td>
+                                        <td>No summary for method setTitle()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>224</td>
+                                        <td>No summary for method getSettings()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>234</td>
+                                        <td>No summary for method getSetting()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>20</td>
+                                        <td>No summary for property $data</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="community/ext_tables.php" id="community/ext_tables.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            community/ext_tables.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Domain/Model/Post.php" id="oneandone_board/Classes/Domain/Model/Post.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Domain/Model/Post.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>304</td>
+                                        <td>No summary for method isLikeable()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>314</td>
+                                        <td>Argument $likeable is missing from the Docblock of setLikeable</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Domain/Model/Category.php" id="oneandone_board/Classes/Domain/Model/Category.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Domain/Model/Category.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="community/ext_emconf.php" id="community/ext_emconf.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            community/ext_emconf.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/ext_emconf.php" id="oneandone_board/ext_emconf.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/ext_emconf.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Controller/TopicController.php" id="oneandone_board/Classes/Controller/TopicController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Controller/TopicController.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>101</td>
+                                        <td>No summary for method initializeView()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Classes/Domain/Model/Topic.php" id="oneandone_board/Classes/Domain/Model/Topic.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Classes/Domain/Model/Topic.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_board.php" id="oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_board.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            oneandone_board/Configuration/TCA/tx_oneandoneboard_domain_model_board.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="community/Classes/Controller/UserController.php" id="community/Classes/Controller/UserController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            community/Classes/Controller/UserController.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>292</td>
+                                        <td>No summary for method getUser()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Configuration/TCA/Overrides/pages_language_overlay.php" id="ratgeberportal/Configuration/TCA/Overrides/pages_language_overlay.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Configuration/TCA/Overrides/pages_language_overlay.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Configuration/TCA/Overrides/tt_content.php" id="ratgeberportal/Configuration/TCA/Overrides/tt_content.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Configuration/TCA/Overrides/tt_content.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Configuration/TCA/Overrides/pages.php" id="ratgeberportal/Configuration/TCA/Overrides/pages.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Configuration/TCA/Overrides/pages.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Configuration/TCA/Overrides/sys_language.php" id="ratgeberportal/Configuration/TCA/Overrides/sys_language.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Configuration/TCA/Overrides/sys_language.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Configuration/TCA/Like.php" id="ratgeberportal/Configuration/TCA/Like.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Configuration/TCA/Like.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Configuration/TCA/User.php" id="ratgeberportal/Configuration/TCA/User.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Configuration/TCA/User.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Configuration/TCA/Comment.php" id="ratgeberportal/Configuration/TCA/Comment.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Configuration/TCA/Comment.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Configuration/TCA/HreflangExtended.php" id="ratgeberportal/Configuration/TCA/HreflangExtended.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Configuration/TCA/HreflangExtended.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Configuration/TCA/Language.php" id="ratgeberportal/Configuration/TCA/Language.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Configuration/TCA/Language.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Configuration/TCA/Hreflang.php" id="ratgeberportal/Configuration/TCA/Hreflang.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Configuration/TCA/Hreflang.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/DataProcessing/ImageTextProcessor.php" id="ratgeberportal/Classes/DataProcessing/ImageTextProcessor.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/DataProcessing/ImageTextProcessor.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>62</td>
+                                        <td>No summary for method getOptionsFromFlexFormData()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/ViewHelpers/PaginateViewHelper.php" id="ratgeberportal/Classes/ViewHelpers/PaginateViewHelper.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/ViewHelpers/PaginateViewHelper.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \TYPO3\Ratgeberportal\ViewHelpers\PaginateViewHelper</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for property $controller</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Model/Article.php" id="ratgeberportal/Classes/Domain/Model/Article.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Model/Article.php
+                            <small style="float: right;padding-right: 10px;">9</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>134</td>
+                                        <td>No summary for method initializeStorageObjects()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>268</td>
+                                        <td>The type hint of the argument is incorrect for the type definition of the @param tag with argument $categories in setCategories()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>291</td>
+                                        <td>No summary for method getParentPageTitle()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>295</td>
+                                        <td>Argument $parentPageTitle is missing from the Docblock of setParentPageTitle</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>295</td>
+                                        <td>No summary for method setParentPageTitle()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>357</td>
+                                        <td>No summary for method getIsLikedByUser()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>361</td>
+                                        <td>Argument $isLikedByUser is missing from the Docblock of setIsLikedByUser</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>361</td>
+                                        <td>No summary for method setIsLikedByUser()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Model/Like.php" id="ratgeberportal/Classes/Domain/Model/Like.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Model/Like.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>40</td>
+                                        <td>No summary for method getUserId()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>44</td>
+                                        <td>Argument $userId is missing from the Docblock of setUserId</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>44</td>
+                                        <td>No summary for method setUserId()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Model/User.php" id="ratgeberportal/Classes/Domain/Model/User.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Model/User.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Model/Comment.php" id="ratgeberportal/Classes/Domain/Model/Comment.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Model/Comment.php
+                            <small style="float: right;padding-right: 10px;">8</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>108</td>
+                                        <td>No summary for method initializeStorageObjects()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>113</td>
+                                        <td>No summary for method getSysLanguageUid()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>118</td>
+                                        <td>Argument $sysLanguageUid is missing from the Docblock of setSysLanguageUid</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>118</td>
+                                        <td>No summary for method setSysLanguageUid()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>250</td>
+                                        <td>No summary for method getIsLikedByUser()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>255</td>
+                                        <td>Argument $isLikedByUser is missing from the Docblock of setIsLikedByUser</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>255</td>
+                                        <td>No summary for method setIsLikedByUser()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Model/Category.php" id="ratgeberportal/Classes/Domain/Model/Category.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Model/Category.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Model/PopularArticle.php" id="ratgeberportal/Classes/Domain/Model/PopularArticle.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Model/PopularArticle.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>99</td>
+                                        <td>No summary for method getShortcut()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>103</td>
+                                        <td>Argument $shortcut is missing from the Docblock of setShortcut</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>103</td>
+                                        <td>No summary for method setShortcut()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Model/RelatedArticle.php" id="ratgeberportal/Classes/Domain/Model/RelatedArticle.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Model/RelatedArticle.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Repository/LikeRepository.php" id="ratgeberportal/Classes/Domain/Repository/LikeRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Repository/LikeRepository.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Repository/UserRepository.php" id="ratgeberportal/Classes/Domain/Repository/UserRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Repository/UserRepository.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Repository/RelatedArticleRepository.php" id="ratgeberportal/Classes/Domain/Repository/RelatedArticleRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Repository/RelatedArticleRepository.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Repository/PopularArticleRepository.php" id="ratgeberportal/Classes/Domain/Repository/PopularArticleRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Repository/PopularArticleRepository.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Repository/ArticleRepository.php" id="ratgeberportal/Classes/Domain/Repository/ArticleRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Repository/ArticleRepository.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Repository/CommentRepository.php" id="ratgeberportal/Classes/Domain/Repository/CommentRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Repository/CommentRepository.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>35</td>
+                                        <td>No summary for property $defaultOrderings</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Domain/Repository/CategoryRepository.php" id="ratgeberportal/Classes/Domain/Repository/CategoryRepository.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Domain/Repository/CategoryRepository.php
+                            <small style="float: right;padding-right: 10px;">10</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>30</td>
+                                        <td>No summary for class \Igroup\Ratgeberportal\Domain\Repository\CategoryRepository</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>59</td>
+                                        <td>Argument $pages is missing from the Docblock of addToTagArray</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>59</td>
+                                        <td>Argument $category is missing from the Docblock of addToTagArray</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>59</td>
+                                        <td>Argument $page is missing from the Docblock of addToTagArray</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>59</td>
+                                        <td>Argument $tags is missing from the Docblock of addToTagArray</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>59</td>
+                                        <td>No summary for method addToTagArray()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>71</td>
+                                        <td>Argument $a is missing from the Docblock of sortTags</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>71</td>
+                                        <td>Argument $b is missing from the Docblock of sortTags</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>71</td>
+                                        <td>No summary for method sortTags()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Controller/RelatedController.php" id="ratgeberportal/Classes/Controller/RelatedController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Controller/RelatedController.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Controller/MetadataController.php" id="ratgeberportal/Classes/Controller/MetadataController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Controller/MetadataController.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>52</td>
+                                        <td>No summary for method injectArticleRepository()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>59</td>
+                                        <td>No summary for method injectCommentRepository()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>63</td>
+                                        <td>No summary for method showAction()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Controller/CommentController.php" id="ratgeberportal/Classes/Controller/CommentController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Controller/CommentController.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>63</td>
+                                        <td>No summary for method injectCommentRepository()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>72</td>
+                                        <td>No summary for method injectUserRepository()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Controller/PopularController.php" id="ratgeberportal/Classes/Controller/PopularController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Controller/PopularController.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Controller/LikeController.php" id="ratgeberportal/Classes/Controller/LikeController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Controller/LikeController.php
+                            <small style="float: right;padding-right: 10px;">5</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>67</td>
+                                        <td>No summary for method injectCommentRepository()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>74</td>
+                                        <td>No summary for method injectArticleRepository()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>81</td>
+                                        <td>No summary for method injectLikeRepository()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>89</td>
+                                        <td>No summary for method injectUserRepository()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Controller/PaginateController.php" id="ratgeberportal/Classes/Controller/PaginateController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Controller/PaginateController.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for class \TYPO3\Ratgeberportal\Controller\PaginateController</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for property $displayPrevTenth</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>8</td>
+                                        <td>No summary for property $displayNextTenth</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Controller/ArticleController.php" id="ratgeberportal/Classes/Controller/ArticleController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Controller/ArticleController.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Controller/CategoryController.php" id="ratgeberportal/Classes/Controller/CategoryController.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Controller/CategoryController.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>79</td>
+                                        <td>Argument $category is missing from the Docblock of showAction</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Hook/FsSliderPreviewRenderer.php" id="ratgeberportal/Classes/Hook/FsSliderPreviewRenderer.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Hook/FsSliderPreviewRenderer.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Hook/ContentPostProcessing.php" id="ratgeberportal/Classes/Hook/ContentPostProcessing.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Hook/ContentPostProcessing.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for class \Igroup\Ratgeberportal\Hook\ContentPostProcessing</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Utility/Canonical.php" id="ratgeberportal/Classes/Utility/Canonical.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Utility/Canonical.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Utility/Helper.php" id="ratgeberportal/Classes/Utility/Helper.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Utility/Helper.php
+                            <small style="float: right;padding-right: 10px;">4</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>64</td>
+                                        <td>Argument $recursive is missing from the Docblock of getArticleSubpages</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>145</td>
+                                        <td>Argument $returnRecord is missing from the Docblock of recordIsLikedByCurrentUser</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>166</td>
+                                        <td>Argument $shortcut is missing from the Docblock of translatePages</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/Classes/Utility/Hreflang.php" id="ratgeberportal/Classes/Utility/Hreflang.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/Classes/Utility/Hreflang.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>182</td>
+                                        <td>Argument $url is missing from the Docblock of wrapHreflang</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>182</td>
+                                        <td>Argument $hreflang is missing from the Docblock of wrapHreflang</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>190</td>
+                                        <td>Argument $page is missing from the Docblock of getUrl</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>190</td>
+                                        <td>Argument $language is missing from the Docblock of getUrl</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>190</td>
+                                        <td>Argument $domainList is missing from the Docblock of getUrl</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/ext_localconf.php" id="ratgeberportal/ext_localconf.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/ext_localconf.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/ext_tables.php" id="ratgeberportal/ext_tables.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/ext_tables.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ratgeberportal/ext_emconf.php" id="ratgeberportal/ext_emconf.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ratgeberportal/ext_emconf.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                    </div>
+    </section>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/DanielGoerz.html">\DanielGoerz</a></li>
+                                                                            <li><a href="../namespaces/Igroup.html">\Igroup</a></li>
+                                                                            <li><a href="../namespaces/ONEANDONE.html">\ONEANDONE</a></li>
+                                                                            <li><a href="../namespaces/TYPO3.html">\TYPO3</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on June 20th, 2016 at 10:10.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

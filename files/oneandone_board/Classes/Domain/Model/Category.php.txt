@@ -1,0 +1,177 @@
+<?php
+namespace ONEANDONE\OneandoneBoard\Domain\Model;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2016
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+/**
+ * Category
+ */
+class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
+
+    /**
+     * label
+     *
+     * @var string
+     */
+    protected $label = '';
+
+    /**
+     * headline
+     *
+     * @var string
+     */
+    protected $headline = '';
+
+    /**
+     * description
+     *
+     * @var string
+     */
+    protected $description = '';
+
+
+    /**
+     * button label
+     *
+     * @var string
+     */
+    protected $buttonlabel = '';
+
+    /**
+     * topics
+     *
+     * @var array
+     */
+    protected $topics = [];
+    
+    /**
+     * Returns the label
+     *
+     * @return string $label
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * Sets the label
+     *
+     * @param int $label
+     * @return void
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+    }
+    
+    /**
+     * Returns the description
+     *
+     * @return string $description
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Sets the description
+     *
+     * @param int $description
+     * @return void
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+    
+    /**
+     * Returns the headline
+     *
+     * @return string $headline
+     */
+    public function getHeadline()
+    {
+        return $this->headline;
+    }
+
+    /**
+     * Sets the headline
+     *
+     * @param int $headline
+     * @return void
+     */
+    public function setHeadline($headline)
+    {
+        $this->headline = $headline;
+    }
+
+    /**
+     * Returns the button label
+     *
+     * @return string $buttonlabel
+     */
+    public function getButtonlabel()
+    {
+        return $this->buttonlabel;
+    }
+    
+    /**
+     * Sets the buttonlabel
+     *
+     * @param string $button label
+     * @return void
+     */
+    public function setButtonlabel($buttonlabel)
+    {
+        $this->buttonlabel = $buttonlabel;
+    }
+    
+    /**
+     * Returns the topics
+     *
+     * @return array $topics
+     */
+    public function getTopics()
+    {
+        return $this->topics;
+    }
+    
+    /**
+     * Sets the topics
+     *
+     * @param array $topics
+     * @return void
+     */
+    public function setTopics($topics)
+    {
+        $this->topics = $topics;
+    }
+
+
+}

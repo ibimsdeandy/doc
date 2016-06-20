@@ -1,0 +1,170 @@
+<?php
+namespace Igroup\Ratgeberportal\Controller;
+
+/**
+ * *************************************************************
+ *
+ * Copyright notice
+ *
+ * (c) 2016 Andreas Kraemer <a.kraemer@i-group.de>, igroup Internetagentur
+ *
+ * All rights reserved
+ *
+ * This script is part of the TYPO3 project. The TYPO3 project is
+ * free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * The GNU General Public License can be found at
+ * http://www.gnu.org/copyleft/gpl.html.
+ *
+ * This script is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * This copyright notice MUST APPEAR in all copies of the script!
+ * *************************************************************
+ */
+
+/**
+ * LikeController
+ */
+class LikeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+	
+	/**
+	 * likeRepository
+	 *
+	 * @var \Igroup\Ratgeberportal\Domain\Repository\LikeRepository
+	 */
+	protected $likeRepository;
+	
+	/**
+	 * commentRepository
+	 *
+	 * @var \Igroup\Ratgeberportal\Domain\Repository\CommentRepository
+	 */
+	protected $commentRepository;
+	
+	/**
+	 * articleRepository
+	 *
+	 * @var \Igroup\Ratgeberportal\Domain\Repository\ArticleRepository
+	 */
+	protected $articleRepository;
+	
+	/**
+	 * userRepository
+	 *
+	 * @var \Igroup\Ratgeberportal\Domain\Repository\UserRepository
+	 */
+	protected $userRepository;
+	
+	/**
+	 * @param \Igroup\Ratgeberportal\Domain\Repository\CommentRepository $commentRepository
+	 */
+	public function injectCommentRepository(\Igroup\Ratgeberportal\Domain\Repository\CommentRepository $commentRepository) {
+		$this->commentRepository = $commentRepository;
+	}
+	
+	/**
+	 * @param \Igroup\Ratgeberportal\Domain\Repository\ArticleRepository $articleRepository
+	 */
+	public function injectArticleRepository(\Igroup\Ratgeberportal\Domain\Repository\ArticleRepository $articleRepository) {
+		$this->articleRepository = $articleRepository;
+	}
+	
+	/**
+	 * @param \Igroup\Ratgeberportal\Domain\Repository\LikeRepository $likeRepository
+	 */
+	public function injectLikeRepository(\Igroup\Ratgeberportal\Domain\Repository\LikeRepository $likeRepository) {
+		$this->likeRepository = $likeRepository;
+	}
+	
+	
+	/**
+	 * @param \Igroup\Ratgeberportal\Domain\Repository\UserRepository $userRepository
+	 */
+	public function injectUserRepository(\Igroup\Ratgeberportal\Domain\Repository\UserRepository $userRepository) {
+		$this->userRepository = $userRepository;
+	}
+
+	
+	/**
+	 * List likes for current article
+	 * If user is logged in show form to add new like
+	 * 
+	 */
+	public function listAction() {
+		$likes = $this->likeRepository->findByPid($GLOBALS['TSFE']->id);
+		foreach($likes as $like) {
+			$like->setLikes(3);
+		}
+		$this->view->assign('likes', $likes);
+	}
+	
+	
+	/**
+	 * Show form to add like
+	 * 
+	 * @param \Igroup\Ratgeberportal\Domain\Model\Comment $comment
+	 */
+	public function addLikeAjaxAction(\Igroup\Ratgeberportal\Domain\Model\Comment $comment) {
+		if($comment->getLikes() === NULL) {
+			$comment->initializeStorageObjects();
+		}
+		
+		$likesNote = '';
+		if($this->commentRepository->updateLike($comment)) {
+			$likesNote = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('comments.liked', $this->extensionName);
+		}
+		
+		return json_encode([
+			'likes' => $comment->getLikes()->count(),
+			'likesNote' => $likesNote
+		]);
+	}
+	
+	
+	/**
+	 * Show form to add like
+	 * 
+	 * @param \Igroup\Ratgeberportal\Domain\Model\Article $article
+	 */
+	public function addArticleLikeAjaxAction(\Igroup\Ratgeberportal\Domain\Model\Article $article) {
+		if($article->getLikes() === NULL) {
+			$article->initializeStorageObjects();
+		}
+		
+		$likesNote = '';
+		if($this->articleRepository->updateLike($article)) {
+			$likesNote = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('articlemetadata.liked', $this->extensionName);
+		}
+		
+		return json_encode([
+			'likes' => $article->getLikes()->count(),
+			'likesNote' => $likesNote
+		]);
+	}
+
+
+	/**
+	 * Add like
+	 *
+	 * @param \Igroup\Ratgeberportal\Domain\Model\Like $like
+	 */
+	public function addAction(\Igroup\Ratgeberportal\Domain\Model\Like $like) {
+		$this->likeRepository->add($like);
+	}
+
+
+	/**
+	 * Remove like
+	 *
+	 * @param \Igroup\Ratgeberportal\Domain\Model\Like $like
+	 */
+	public function removeAction(\Igroup\Ratgeberportal\Domain\Model\Like $like) {
+		$this->likeRepository->remove($like);
+	}
+}

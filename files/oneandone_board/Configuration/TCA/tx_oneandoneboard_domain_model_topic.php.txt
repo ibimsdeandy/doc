@@ -1,0 +1,151 @@
+<?php
+return [
+    'ctrl' => [
+        'title' => 'LLL:EXT:oneandone_board/Resources/Private/Language/locallang_db.xlf:tx_oneandoneboard_domain_model_topic',
+        'label' => 'title',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'cruser_id' => 'cruser_id',
+        'dividers2tabs' => TRUE,
+        'versioningWS' => 2,
+        'versioning_followPages' => TRUE,
+
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l10n_parent',
+        'transOrigDiffSourceField' => 'l10n_diffsource',
+        'delete' => 'deleted',
+        'enablecolumns' => [
+            'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
+        ],
+        'searchFields' => 'title,type,author,text,',
+        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('oneandone_board') . 'Resources/Public/Icons/tx_oneandoneboard_domain_model_topic.png'
+    ],
+    'interface' => [
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, hidden, title, type, text, author',
+    ],
+    'types' => [
+        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, type, related, postid, author, boardid, --div--;LLL:EXT:oneandone_board/Resources/Private/Language/locallang_db.xlf:tabs.posts, text'],
+    ],
+    'palettes' => [
+        '1' => ['showitem' => ''],
+    ],
+    'columns' => [
+        'crdate' => [
+            [
+                'exclude' => 1,
+                'label' => 'Creation date',
+                'config' => [
+                    'type' => 'none',
+                    'format' => 'date',
+                    'eval' => 'date',
+                ]
+            ]
+        ],
+        'sys_language_uid' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'foreign_table' => 'sys_language',
+                'foreign_table_where' => 'ORDER BY sys_language.title',
+                'items' => [
+                    ['LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1],
+                    ['LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0]
+                ],
+            ],
+        ],
+        'l10n_parent' => [
+            'displayCond' => 'FIELD:sys_language_uid:>:0',
+            'exclude' => 1,
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['', 0],
+                ],
+                'foreign_table' => 'tx_oneandoneboard_domain_model_board',
+                'foreign_table_where' => 'AND tx_oneandoneboard_domain_model_board.pid=###CURRENT_PID### AND tx_oneandoneboard_domain_model_board.sys_language_uid IN (-1,0)',
+            ],
+        ],
+        'l10n_diffsource' => [
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
+
+        't3ver_label' => [
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'max' => 255,
+            ]
+        ],
+        'text' => [
+            'label' => 'Posts',
+            'config' => [
+                'type' => 'inline',
+                'foreign_sortby' => 'uid',
+                'foreign_table' => 'tx_oneandoneboard_domain_model_post',
+                'foreign_field' => 'topicid',
+                'foreign_label' => 'author',
+                'appearance' => [
+                    'useCombination' => 1,
+                    'collapse' => 0,
+                    'levelLinksPosition' => 'none',
+                ],
+            ],
+        ],
+        'boardid' => [
+            'label' => 'Tags',
+            'config' => [
+                'type' => 'select',
+                'foreign_class' => '\ONEANDONE\OneandoneBoard\Domain\Model\Board',
+                'foreign_table' => 'tx_oneandoneboard_domain_model_board',
+                'maxitems' => 3
+            ],
+        ],
+        'title' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:oneandone_board/Resources/Private/Language/locallang_db.xlf:tx_oneandoneboard_domain_model_topic.title',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'author' => [
+            'label' => 'Author',
+            'config' => [
+                'type' => 'select',
+                'foreign_class' => '\ONEANDONE\Community\Domain\Model\User',
+                'foreign_table' => 'tx_community_domain_model_user',
+                'maxitems' => 1
+            ]
+        ],
+        'related' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:oneandone_board/Resources/Private/Language/locallang_db.xlf:tx_oneandoneboard_domain_model_topic.related',
+            'config' => [
+                'type' => 'select',
+                'items' => [
+                    ['No', 0],
+                    ['Yes', 1]
+                ]
+            ]
+        ],
+        'type' => [
+            'label' => 'Category',
+            'config' => [
+                'type' => 'select',
+                'foreign_class' => '\ONEANDONE\OneandoneBoard\Domain\Model\Category',
+                'foreign_table' => 'tx_oneandoneboard_domain_model_category',
+                'maxitems' => 1
+            ],
+        ],
+    ]
+];

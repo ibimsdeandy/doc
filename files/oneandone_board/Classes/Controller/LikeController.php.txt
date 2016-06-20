@@ -1,0 +1,117 @@
+<?php
+namespace ONEANDONE\OneandoneBoard\Controller;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2016
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+/**
+ * LikeController
+ */
+class LikeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
+
+    /**
+     * likeRepository
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Repository\LikeRepository
+     * @inject
+     */
+    protected $likeRepository = NULL;
+
+    /**
+     * topicRepository
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Repository\TopicRepository
+     * @inject
+     */
+    protected $topicRepository = NULL;
+
+    /**
+     * user
+     *
+     * @var \ONEANDONE\Community\Utility\Helper
+     * @inject
+     */
+    protected $user = NULL;
+
+    /**
+     * general
+     *
+     * @var \ONEANDONE\OneandoneBoard\Utility\Helper
+     * @inject
+     */
+    protected $general = NULL;
+
+    const STATE_REMOVED = 'removed';
+    const STATE_ADDED = 'added';
+
+    /**
+     * action new
+     *
+     * @return void
+     */
+    public function likeAction()
+    {
+
+        $state = null;
+
+        if ($this->user->loggedIn() && $this->request->hasArgument('postid')) {
+
+            $postid = $this->request->getArgument('postid');
+            $like = $this->likeRepository->hasLiked($this->user->getUser()->getUid(), $postid);
+
+            if (count($like) > 0) {
+
+                $this->likeRepository->remove($like->getFirst());
+
+                $state = self::STATE_REMOVED;
+
+            } else {
+
+                $state = self::STATE_ADDED;
+
+                $like = new \ONEANDONE\OneandoneBoard\Domain\Model\Like();
+
+                $like->setPostid($postid);
+                $like->setAuthor($this->user->getUser()->getUid());
+
+                $this->likeRepository->add($like);
+
+            }
+
+        }
+
+        $persistenceManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
+        $persistenceManager->persistAll();
+
+        return json_encode([
+            'likes' => $this->likeRepository->getByPostId($postid),
+            'state' => $state
+        ]);
+
+    }
+
+}

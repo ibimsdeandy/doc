@@ -1,0 +1,75 @@
+<?php
+
+namespace TYPO3\Ratgeberportal\Controller;
+
+class PaginateController extends \TYPO3\CMS\Fluid\ViewHelpers\Widget\Controller\PaginateController {
+	
+	private $displayPrevTenth = false;
+	private $displayNextTenth = false;
+	
+	/**
+	 * Overwrite
+	 */
+	protected function calculateDisplayRange() {
+		$maximumNumberOfLinks = $this->maximumNumberOfLinks;
+		if ($maximumNumberOfLinks > $this->numberOfPages) {
+			$maximumNumberOfLinks = $this->numberOfPages;
+		}
+		$delta = floor($this->maximumNumberOfLinks / 2);
+		$this->displayRangeStart = $this->currentPage - $delta;
+		$this->displayRangeEnd = $this->currentPage + $delta;
+		if ($this->displayRangeStart < 1) {
+			$this->displayRangeEnd -= $this->displayRangeStart;
+		}
+		if ($this->displayRangeEnd > $this->numberOfPages) {
+			$this->displayRangeStart -= $this->displayRangeEnd - $this->numberOfPages;
+		}
+		$this->displayRangeStart = (int) max($this->displayRangeStart, 1);
+		$this->displayRangeEnd = (int) min($this->displayRangeEnd, $this->numberOfPages);
+		
+		if($this->displayRangeStart % 10 === 0) {
+			$this->displayPrevTenth = $this->displayRangeStart - 10;
+		} else {
+			$this->displayPrevTenth = $this->displayRangeStart - $this->displayRangeStart % 10;
+		}
+		if($this->displayPrevTenth <= 1) {
+			$this->displayPrevTenth = false;
+		}
+		
+		$this->displayNextTenth = $this->displayRangeEnd + 10 - $this->displayRangeEnd % 10;
+		if($this->displayNextTenth >= $this->numberOfPages) {
+			$this->displayNextTenth = false;
+		}
+	}
+
+	/**
+	 * Overwrite
+	 */
+	protected function buildPagination() {
+		$this->calculateDisplayRange();
+		$pages = array();
+		for ($i = $this->displayRangeStart; $i <= $this->displayRangeEnd; $i++) {
+			$pages[] = array('number' => $i, 'isCurrent' => $i === $this->currentPage);
+		}
+		$pagination = array(
+			'pages' => $pages,
+			'current' => $this->currentPage,
+			'numberOfPages' => $this->numberOfPages,
+			'displayRangeStart' => $this->displayRangeStart,
+			'displayRangeEnd' => $this->displayRangeEnd,
+			'displayPrevTenth' => $this->displayPrevTenth,
+			'displayNextTenth' => $this->displayNextTenth,
+			'hasLessPages' => $this->displayRangeStart > 2,
+			'hasMorePages' => $this->displayRangeEnd + 1 < $this->numberOfPages
+		);
+		if ($this->currentPage < $this->numberOfPages) {
+			$pagination['nextPage'] = $this->currentPage + 1;
+		}
+		if ($this->currentPage > 1) {
+			$pagination['previousPage'] = $this->currentPage - 1;
+		}
+		return $pagination;
+	}
+
+}
+

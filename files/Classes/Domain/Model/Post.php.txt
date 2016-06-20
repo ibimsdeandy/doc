@@ -1,0 +1,344 @@
+<?php
+namespace ONEANDONE\OneandoneBoard\Domain\Model;
+
+    /***************************************************************
+     *
+     *  Copyright notice
+     *
+     *  (c) 2016
+     *
+     *  All rights reserved
+     *
+     *  This script is part of the TYPO3 project. The TYPO3 project is
+     *  free software; you can redistribute it and/or modify
+     *  it under the terms of the GNU General Public License as published by
+     *  the Free Software Foundation; either version 3 of the License, or
+     *  (at your option) any later version.
+     *
+     *  The GNU General Public License can be found at
+     *  http://www.gnu.org/copyleft/gpl.html.
+     *
+     *  This script is distributed in the hope that it will be useful,
+     *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+     *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     *  GNU General Public License for more details.
+     *
+     *  This copyright notice MUST APPEAR in all copies of the script!
+     ***************************************************************/
+
+/**
+ * Post
+ */
+class Post extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
+
+    /**
+     * tstamp
+     *
+     * @var string
+     */
+    protected $tstamp;
+
+    /**
+     * topic
+     *
+     * @var string
+     */
+    protected $topic = '';
+
+    /**
+     * topicid
+     *
+     * @var int
+     */
+    protected $topicid = 0;
+
+    /**
+     * editable
+     *
+     * @var boolean
+     */
+    protected $editable = false;
+
+    /**
+     * likes
+     *
+     * @var array
+     */
+    protected $likes = [];
+
+    /**
+     * posts
+     *
+     * @var array
+     */
+    protected $posts = [];
+
+    /**
+     * crdate
+     *
+     * @var string
+     */
+    protected $crdate;
+
+    /**
+     * parentid
+     *
+     * @var int
+     */
+    protected $parentid = 0;
+
+    /**
+     * author
+     *
+     * @var int
+     */
+    protected $author = 0;
+
+    /**
+     * text
+     *
+     * @var string
+     */
+    protected $text = '';
+
+    /**
+     * likeable
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Model\Like
+     */
+    protected $likeable;
+
+    /**
+     * Returns the crdate
+     *
+     * @return string $crdate
+     */
+    public function getCrdate()
+    {
+        return $this->crdate;
+    }
+
+    /**
+     * Sets the crdate
+     *
+     * @param string $crdate
+     * @return void
+     */
+    public function setCrdate($crdate)
+    {
+        $this->crdate = $crdate;
+    }
+
+    /**
+     * Returns the tstamp
+     *
+     * @return string $tstamp
+     */
+    public function getTstamp()
+    {
+        return $this->tstamp;
+    }
+
+    /**
+     * Sets the tstamp
+     *
+     * @param string $tstamp
+     * @return void
+     */
+    public function setTstamp($tstamp)
+    {
+        $this->tstamp = $tstamp;
+    }
+
+    /**
+     * Returns the parentid
+     *
+     * @return int $parentid
+     */
+    public function getParentId()
+    {
+        return $this->parentid;
+    }
+
+    /**
+     * Sets the parentid
+     *
+     * @param int $parentid
+     * @return void
+     */
+    public function setParentId($parentid)
+    {
+        $this->parentid = $parentid;
+    }
+
+    /**
+     * Sets the editable
+     *
+     * @param string $editable
+     * @return void
+     */
+    public function setEditable($editable)
+    {
+        $this->editable = $editable;
+    }
+
+    /**
+     * Sets the posts
+     *
+     * @param array $posts
+     * @return void
+     */
+    public function setPosts($posts)
+    {
+        $this->posts = $posts;
+    }
+
+    /**
+     * Returns the topicid
+     *
+     * @return int $topicid
+     */
+    public function getTopicid()
+    {
+        return $this->topicid;
+    }
+
+    /**
+     * Sets the likes
+     *
+     * @param array $likes
+     * @return void
+     */
+    public function setLikes($likes)
+    {
+        $this->likes = $likes;
+    }
+
+    /**
+     * Returns the topic
+     *
+     * @return int $topic
+     */
+    public function getTopic()
+    {
+        return $this->topic;
+    }
+
+    /**
+     * Returns the editable
+     *
+     * @return int $editable
+     */
+    public function getEditable()
+    {
+        return $this->editable;
+    }
+
+    /**
+     * Returns the posts
+     *
+     * @return int $posts
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
+    /**
+     * Sets the topicid
+     *
+     * @param int $topicid
+     * @return void
+     */
+    public function setTopicid($topicid)
+    {
+        $this->topicid = $topicid;
+    }
+
+    /**
+     * Returns the likes
+     *
+     * @return array $likes
+     */
+    public function getLikes()
+    {
+        return $this->likes;
+    }
+
+    /**
+     * Sets the topic
+     *
+     * @param int $topic
+     * @return void
+     */
+    public function setTopic($topic)
+    {
+        $this->topic = $topic;
+    }
+
+    /**
+     * Returns the author
+     *
+     * @return int $author
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Sets the author
+     *
+     * @param int $author
+     * @return void
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @return Like
+     */
+    public function isLikeable()
+    {
+        return $this->likeable;
+    }
+
+    /**
+     * Sets the likeable
+     *
+     * @return void
+     */
+    public function setLikeable($likeable)
+    {
+        $this->likeable = $likeable;
+    }
+
+    /**
+     * Returns the text
+     *
+     * @return string $text
+     */
+    public function getText()
+    {
+        $text = $this->text;
+        $text = preg_replace('~\\[b\\](.*?)\\[/b\\]~s', '<strong>\\1</strong>', $text);
+        $text = preg_replace('~\\[code\\](.*?)\\[/code\\]~s', '<pre style="font-size: 12px;"><code>\\1</code></pre>', $text);
+        $text = preg_replace('~\\[alert\\](.*?)\\[/alert\\]~s', '<div class="alert">\\1</div>', nl2br($text));
+        return $text;
+    }
+
+    /**
+     * Sets the text
+     *
+     * @param string $text
+     * @return void
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+    }
+
+}

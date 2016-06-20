@@ -1,0 +1,84 @@
+<?php
+
+namespace Igroup\Ratgeberportal\Controller;
+
+/* * *************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2015 Andreas Kraemer <a.kraemer@i-group.de>, igroup Internetagentur
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ * ************************************************************* */
+
+/**
+ * MetadataController
+ */
+class MetadataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+
+	/**
+	 * articleRepository
+	 *
+	 * @var \Igroup\Ratgeberportal\Domain\Repository\ArticleRepository
+	 */
+	protected $articleRepository;
+	
+	/**
+	 * commentRepository
+	 *
+	 * @var \Igroup\Ratgeberportal\Domain\Repository\CommentRepository
+	 */
+	protected $commentRepository;
+
+	/**
+	 * @param \Igroup\Ratgeberportal\Domain\Repository\ArticleRepository $articleRepository
+	 */
+	public function injectArticleRepository(\Igroup\Ratgeberportal\Domain\Repository\ArticleRepository $articleRepository) {
+		$this->articleRepository = $articleRepository;
+	}
+
+	/**
+	 * @param \Igroup\Ratgeberportal\Domain\Repository\CommentRepository $commentRepository
+	 */
+	public function injectCommentRepository(\Igroup\Ratgeberportal\Domain\Repository\CommentRepository $commentRepository) {
+		$this->commentRepository = $commentRepository;
+	}
+
+	public function showAction() {
+		$article = $this->articleRepository->findByUid($GLOBALS['TSFE']->id);
+		$article->setIsLikedByUser(\Igroup\Ratgeberportal\Utility\Helper::recordIsLikedByCurrentUser($article, FALSE));
+		$parentPage = $this->articleRepository->findByUid($article->getPid());
+		$comments = $this->commentRepository->findByPid($article->getUid());
+
+		$likeable = true;
+
+		if (preg_match('#ratgeber#', $_SERVER['HTTP_HOST'])) {
+			$likeable = false;
+		}
+
+		$this->view->assignMultiple([
+			'article' => $article,
+			'parentPage' => $parentPage,
+			'comments' => $comments,
+			'likeable' => $likeable
+		]);
+	}
+
+}
+

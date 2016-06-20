@@ -1,0 +1,259 @@
+<?php
+namespace Igroup\Ratgeberportal\Domain\Model;
+
+    /***************************************************************
+     *
+     *  Copyright notice
+     *
+     *  (c) 2016 Andreas Kraemer <a.kraemer@i-group.de>, igroup Internetagentur
+     *
+     *  All rights reserved
+     *
+     *  This script is part of the TYPO3 project. The TYPO3 project is
+     *  free software; you can redistribute it and/or modify
+     *  it under the terms of the GNU General Public License as published by
+     *  the Free Software Foundation; either version 3 of the License, or
+     *  (at your option) any later version.
+     *
+     *  The GNU General Public License can be found at
+     *  http://www.gnu.org/copyleft/gpl.html.
+     *
+     *  This script is distributed in the hope that it will be useful,
+     *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+     *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     *  GNU General Public License for more details.
+     *
+     *  This copyright notice MUST APPEAR in all copies of the script!
+     ***************************************************************/
+
+/**
+ * Comment
+ */
+class Comment extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
+
+    /**
+     * sys_language_uid
+     *
+     * @var int
+     */
+    protected $sysLanguageUid = 0;
+
+    /**
+     * likes
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Igroup\Ratgeberportal\Domain\Model\Like>
+     */
+    protected $likes = NULL;
+
+    /**
+     * crdate
+     *
+     * @var int
+     */
+    protected $crdate = 0;
+
+    /**
+     * subject
+     *
+     * @var string
+     */
+    protected $subject = '';
+
+    /**
+     * text
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $text = '';
+
+    /**
+     * user
+     *
+     * @var \ONEANDONE\Community\Domain\Model\User
+     * @validate NotEmpty
+     */
+    protected $user = null;
+
+    /**
+     * isLikedByUser
+     * @var bool
+     * @transient
+     */
+    protected $isLikedByUser = FALSE;
+
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
+
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     *
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->likes = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    public function initializeStorageObjects()
+    {
+        $this->initStorageObjects();
+    }
+
+    function getSysLanguageUid()
+    {
+        return $this->sysLanguageUid;
+    }
+
+    function setSysLanguageUid($sysLanguageUid)
+    {
+        $this->sysLanguageUid = $sysLanguageUid;
+    }
+
+    /**
+     * Returns the likes
+     *
+     * @return int $likes
+     */
+    function getLikes()
+    {
+        return $this->likes;
+    }
+
+    /**
+     * Sets the likes
+     *
+     * @param int $likes
+     * @return void
+     */
+    function setLikes($likes)
+    {
+        $this->likes = $likes;
+    }
+
+    /**
+     * Adds a Like
+     *
+     * @param \Igroup\Ratgeberportal\Domain\Model\Like $like
+     * @return void
+     */
+    public function addLike(\Igroup\Ratgeberportal\Domain\Model\Like $like)
+    {
+        $this->likes->attach($like);
+    }
+
+    /**
+     * Removes a Like
+     *
+     * @param \Igroup\Ratgeberportal\Domain\Model\Like $likeToRemove The Like to be removed
+     * @return void
+     */
+    public function removeLike(\Igroup\Ratgeberportal\Domain\Model\Like $likeToRemove)
+    {
+        $this->likes->detach($likeToRemove);
+    }
+
+    /**
+     * Returns the crdate
+     *
+     * @return int $crdate
+     */
+    function getCrdate()
+    {
+        return $this->crdate;
+    }
+
+    /**
+     * Sets the crdate
+     *
+     * @param int $crdate
+     * @return void
+     */
+    function setCrdate($crdate)
+    {
+        $this->crdate = $crdate;
+    }
+
+    /**
+     * Returns the subject
+     *
+     * @return string $subject
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * Sets the subject
+     *
+     * @param string $subject
+     * @return void
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+    }
+
+    /**
+     * Returns the text
+     *
+     * @return string $text
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    /**
+     * Sets the text
+     *
+     * @param string $text
+     * @return void
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+    }
+
+    /**
+     * Returns the user
+     *
+     * @return \ONEANDONE\Community\Domain\Model\User$user
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Sets the user
+     *
+     * @param \ONEANDONE\Community\Domain\Model\User $user
+     * @return void
+     */
+    public function setUser(\ONEANDONE\Community\Domain\Model\User $user)
+    {
+        $this->user = $user;
+    }
+
+    function getIsLikedByUser()
+    {
+        return $this->isLikedByUser;
+    }
+
+    function setIsLikedByUser($isLikedByUser)
+    {
+        $this->isLikedByUser = $isLikedByUser;
+    }
+}

@@ -1,0 +1,118 @@
+<?php
+namespace Igroup\Ratgeberportal\Controller;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2015 Andreas Kraemer <a.kraemer@i-group.de>, igroup Internetagentur
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+/**
+ * CategoryController
+ */
+class CategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+	
+	/**
+	 * articleRepository
+	 *
+	 * @var \Igroup\Ratgeberportal\Domain\Repository\ArticleRepository
+	 * @inject
+	 */
+	protected $articleRepository;
+	
+	/**
+	 * categoryRepository
+	 *
+	 * @var \Igroup\Ratgeberportal\Domain\Repository\CategoryRepository
+	 * @inject
+	 */
+	protected $categoryRepository;
+	
+	/**
+	 * Helper utility class
+	 *
+	 * @var Igroup\Ratgeberportal\Utility\Helper
+	 * @inject
+	 */
+	private $helperUtility;
+
+	/**
+	 * action list
+	 *
+	 * @return parsed view as html
+	 */
+	public function listAction() {
+		$articleUids = $this->helperUtility->getArticleSubpages($GLOBALS['TSFE']->id);
+		
+		if($articleUids !== false) {
+			$tags = $this->categoryRepository->findTags($articleUids);
+		}
+		
+		$this->view->assign('tags', $tags);
+		$this->view->assign('slu', $GLOBALS['TSFE']->sys_language_uid);
+	}
+
+	/**
+	 * action list
+	 *
+	 * @return parsed view as html
+	 */
+	public function showAction(\TYPO3\CMS\Extbase\Domain\Model\Category $category) {
+		// Vergleicht das Feld und nicht die MM-Relation...
+		//$articles = $this->articleRepository->findByCategories($category);
+		$articles = $this->articleRepository->findWithCategory($category);
+
+		if($GLOBALS['TSFE']->sys_language_uid > 0) {
+
+			$translatedArticles = $this->helperUtility->translatePages($articles, $GLOBALS['TSFE']->sys_language_uid);
+
+			$this->articleRepository->addParentPageTitle($translatedArticles);
+			$this->view->assign('articles', $translatedArticles);
+
+		} else {
+
+			$this->articleRepository->addParentPageTitle($articles);
+			$this->view->assign('articles', $articles);
+		}
+
+		$this->view->assign('tag', $category);
+
+			// adapt the page title
+		$pageTitle = $category->getTitle() . ' ' . $this->translate('tags.page.title');
+		$GLOBALS['TSFE']->page['title'] = $pageTitle;
+
+		// adapt the page description
+		$description = $this->translate('tags.page.description', array($category->getTitle()));
+		$GLOBALS['TSFE']->page['description'] = $description;
+	}
+
+	/**
+	 * Translates content of the given key
+	 *
+	 * @param $key the translation key
+	 * @param arguments the arguments - placeholders in the translation string
+	 * @return mixed
+	 */
+	protected function translate($key, $arguments = NULL) {
+		return \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'ratgeberportal', $arguments);
+	}
+}

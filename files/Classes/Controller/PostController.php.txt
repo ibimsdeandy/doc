@@ -1,0 +1,189 @@
+<?php
+namespace ONEANDONE\OneandoneBoard\Controller;
+
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2016
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+/**
+ * PostController
+ */
+class PostController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
+
+    /**
+     * postRepository
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Repository\PostRepository
+     * @inject
+     */
+    protected $postRepository = NULL;
+
+    /**
+     * topicRepository
+     *
+     * @var \ONEANDONE\OneandoneBoard\Domain\Repository\TopicRepository
+     * @inject
+     */
+    protected $topicRepository = NULL;
+
+    /**
+     * helper
+     *
+     * @var \ONEANDONE\Community\Utility\Helper
+     * @inject
+     */
+    protected $helper = NULL;
+
+    /**
+     * general
+     *
+     * @var \ONEANDONE\OneandoneBoard\Utility\Helper
+     * @inject
+     */
+    protected $general = NULL;
+
+    /**
+     * action new
+     *
+     * @return void
+     */
+    public function newAction()
+    {
+        $this->view->assign('topicid', $this->request->getArgument('topicid'));
+    }
+
+    private function getDataFolderId()
+    {
+        $c = $this->configurationManager->getContentObject();
+        return $c->data['pages'];
+    }
+
+    /**
+     * action create
+     *
+     * @param \ONEANDONE\OneandoneBoard\Domain\Model\Post $newPost
+     * @return void
+     */
+    public function createAction(\ONEANDONE\OneandoneBoard\Domain\Model\Post $newPost)
+    {
+
+        if (!$this->helper->loggedIn()) {
+            return;
+        }
+
+        $newPost->setLikes(0);
+        $newPost->setAuthor($this->helper->getUser()->getUid());
+        $newPost->setPid($this->getDataFolderId());
+
+        $this->postRepository->add($newPost);
+
+        $this->redirect('show', 'Topic', 'oneandoneboard', array(
+            'topic' => $newPost->getTopicid()
+        ));
+
+    }
+
+    /**
+     * action edit
+     *
+     * @param \ONEANDONE\OneandoneBoard\Domain\Model\Post $post
+     * @ignorevalidation $post
+     * @return void
+     */
+    public function editAction(\ONEANDONE\OneandoneBoard\Domain\Model\Post $post)
+    {
+        $this->view->assign('post', $post);
+    }
+
+    /**
+     * action update
+     *
+     * @param \ONEANDONE\OneandoneBoard\Domain\Model\Post $post
+     * @return void
+     */
+    public function updateAction(\ONEANDONE\OneandoneBoard\Domain\Model\Post $post)
+    {
+
+        $this->addFlashMessage('Your post has been successfully updated.', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+        $this->postRepository->update($post);
+
+        $this->redirect('show', 'Topic', 'oneandoneboard', array(
+            'topic' => $post->getTopicid()
+        ));
+
+    }
+
+    /**
+     * action delete
+     *
+     * @param \ONEANDONE\OneandoneBoard\Domain\Model\Post $post
+     * @return void
+     */
+    public function deleteAction(\ONEANDONE\OneandoneBoard\Domain\Model\Post $post)
+    {
+
+        $valid = true;
+
+        /**
+         * Check if user is allowed to delete
+         * this post.
+         */
+        if ($post->getAuthor() != $this->helper->getUser()->getUid()) {
+            $valid = false;
+            $this->addFlashMessage('You are not allowed to delete posts from other community users.');
+        }
+
+        if ($valid) {
+
+            $this->postRepository->remove($post);
+
+            /**
+             * Delete the topic and mapping entry if the
+             * deleted post is the first post of the
+             * given topic.
+             */
+            if (count($this->postRepository->getByTopicId($post->getTopicid())) == 1) {
+                $this->topicRepository->remove($this->topicRepository->findByUid($post->getTopicid()));
+                return $this->redirect('list', 'Board', 'oneandoneboard');
+            }
+
+        }
+
+        $this->redirect('show', 'Topic', 'oneandoneboard', array(
+            'topic' => $post->getTopicid()
+        ));
+
+    }
+
+    public function getBackendTitle(&$parameters)
+    {
+        $record = BackendUtility::getRecord($parameters['table'], $parameters['row']['uid']);
+        $parameters['title'] = '#' . $record['topicid'] . ' ' . strip_tags($record['text']);
+    }
+
+}

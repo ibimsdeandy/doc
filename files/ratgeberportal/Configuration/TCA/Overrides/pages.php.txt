@@ -1,0 +1,119 @@
+<?php
+defined('TYPO3_MODE') or die();
+
+// Adds the related field to the pages table
+// https://docs.typo3.org/typo3cms/TCAReference/Reference/Columns/Group/Index.html
+$tempColumns = array(
+	'tx_ratgeberportal_related' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_db.xlf:pages.tx_ratgeberportal_related',
+		'config' => array(
+			'type' => 'group',
+			'internal_type' => 'db',
+			'allowed' => 'pages',
+			'show_thumbs' => 1,
+			'size' => 5,
+			'minitems' => 0,
+			'maxitems' => 5,
+			'wizards' => array(
+				'suggest' => array(
+					'type' => 'suggest',
+					'default' => array(
+						'searchWholePhrase' => 1,
+						'searchCondition' => 'doktype=1',
+					),
+				)
+			)
+		)
+	),
+	'tx_ratgeberportal_noindex' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_db.xlf:pages.tx_ratgeberportal_noindex',
+		'config' => array(
+			'type' => 'check',
+			'default' => '0'
+        )
+	),
+	'tx_ratgeberportal_nofollow' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_db.xlf:pages.tx_ratgeberportal_nofollow',
+		'config' => array(
+			'type' => 'check',
+			'default' => '0'
+        )
+	),
+	'tx_ratgeberportal_canonical' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_db.xlf:pages.tx_ratgeberportal_canonical',
+		'config' => array(
+			'type' => 'group',
+			'internal_type' => 'db',
+			'allowed' => 'pages',
+			'show_thumbs' => 1,
+			'size' => 1,
+			'max_size' => 1,
+			'minitems' => 0,
+			'maxitems' => 1,
+			'wizards' => array(
+				'suggest' => array(
+					'type' => 'suggest',
+					'default' => array(
+						'searchWholePhrase' => 1,
+						'searchCondition' => 'doktype=1',
+					),
+				)
+			)
+		)
+	),
+	'tx_ratgeberportal_hreflang' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_db.xlf:pages.tx_ratgeberportal_hreflang',
+		'config' => array(
+			'type' => 'inline',
+			'foreign_table' => 'tx_ratgeberportal_domain_model_hreflang',
+			'foreign_field' => 'page',
+		)
+	),
+	'tx_ratgeberportal_hreflang_extended' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_db.xlf:pages.tx_ratgeberportal_hreflang_extended',
+		'config' => array(
+			'type' => 'inline',
+			'foreign_table' => 'tx_ratgeberportal_domain_model_hreflang_extended',
+			'foreign_field' => 'page',
+		)
+	),
+	'crdate' => array(
+		'exclude' => 1
+	),
+	'tstamp' => array(
+		'exclude' => 1
+	),
+	'tx_ratgeberportal_allowcomments' => array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:ratgeberportal/Resources/Private/Language/locallang_db.xlf:pages.tx_ratgeberportal_allowcomments',
+		'config' => array(
+			'type' => 'check',
+			'default' => '0'
+        )
+	),
+	'tx_ratgeberportal_likes' => array(
+		'exclude' => 1,
+		'config' => array(
+			'type' => 'group',
+			'internal_type' => 'db',
+			'allowed' => 'tx_ratgeberportal_domain_model_like',
+			'MM' => 'tx_ratgeberportal_like_record_mm',
+			'MM_match_fields' => array('tablenames' => 'pages', 'fieldname' => 'likes'),
+			'foreign_table' => 'tx_ratgeberportal_domain_model_like'
+		),
+	),
+);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumns);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', 'tx_ratgeberportal_related', '', 'after:categories');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', 'tx_ratgeberportal_allowcomments', '', 'after:tx_ratgeberportal_related');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', 'tx_ratgeberportal_canonical', '', 'before:keywords');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', 'tx_ratgeberportal_hreflang', '', 'after:description');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', 'tx_ratgeberportal_hreflang_extended', '', 'after:tx_ratgeberportal_hreflang');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', 'tx_ratgeberportal_noindex', '', 'after:tx_ratgeberportal_hreflang_extended');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', 'tx_ratgeberportal_nofollow', '', 'after:tx_ratgeberportal_noindex');

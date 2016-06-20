@@ -1,0 +1,138 @@
+<?php
+
+namespace Igroup\Ratgeberportal\Domain\Repository;
+
+/* * *************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2015 Andreas Kraemer <a.kraemer@i-group.de>, igroup Internetagentur
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ * ************************************************************* */
+
+/**
+ * The repository for Articles
+ */
+class ArticleRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+
+	/**
+	 * Initializes the repository.
+	 *
+	 * @return void
+	 */
+	public function initializeObject() {
+		/** @var $querySettings \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings */
+		$querySettings = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
+		$querySettings->setRespectStoragePage(FALSE);
+		$this->setDefaultQuerySettings($querySettings);
+	}
+
+	/**
+	 * Find articles
+	 *
+	 * @param array $uidList
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
+	 */
+	public function findArticles(array $uidList) {
+		if (count($uidList) === 0) {
+			return;
+		}
+		$query = $this->createQuery();
+		//$query->getQuerySettings()->setRespectStoragePage(false);
+		$query->setOrderings(array('tstamp' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING));
+
+		$query->matching(
+			$query->logicalAnd(
+				$query->in('uid', $uidList),
+				// just "regular" pages
+				$query->equals('doktype', \TYPO3\CMS\Frontend\Page\PageRepository::DOKTYPE_DEFAULT)
+			)
+		);
+		return $query->execute();
+	}
+
+	/**
+	 * Find articles which have the given category.
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
+	 */
+	public function findWithCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category) {
+		$query = $this->createQuery();
+		$query->matching($query->contains('categories', $category));
+		return $query->execute();
+	}
+
+	/**
+	 * Load the Articles parentPage and add its title to the article model
+	 * 
+	 * @param [\TYPO3\CMS\Extbase\Domain\Model\Article] $articles
+	 * 
+	 * @return void
+	 */
+	public function addParentPageTitle(&$articles) {
+		if($articles) {
+			$pageRepo = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
+	
+			$parentPages = [];
+			$articlesArray = [];
+			foreach ($articles as $key => $article) {
+				if(is_array($article)) {
+					// translated article given as array from getPageOverlay method
+					$pid = $article['pid'];
+					if($parentPages[$pid] === null) {
+						$parentPages[$pid] = $pageRepo->getPageOverlay($pid, $article['_PAGES_OVERLAY_LANGUAGE']);
+					}
+					$articles[$key]['parentPageTitle'] = $parentPages[$pid]['title'];
+					$articlesArray[] = $article;
+				} else {
+					$pid = $article->getPid();
+					if($parentPages[$pid] === null) {
+						$parentPages[$pid] = $pageRepo->getPage($pid);
+					}
+					$article->setParentPageTitle($parentPages[$pid]['title']);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Likes or un-likes the current record
+	 * @param \Igroup\Ratgeberportal\Domain\Model\Article $article
+	 */
+	public function updateLike($article) {
+		$like = \Igroup\Ratgeberportal\Utility\Helper::recordIsLikedByCurrentUser($article);
+		if ($like !== FALSE) {
+			// remove like
+			$article->removeLike($like);
+			$this->update($article);
+			return false;
+		}
+		// create new like
+		$newLike = $this->objectManager->get(\Igroup\Ratgeberportal\Domain\Model\Like::class);
+		$newLike->setUserId(\Igroup\Ratgeberportal\Utility\Helper::getUserId());
+		$article->addLike($newLike);
+		$this->update($article);
+		return true;
+	}
+}
+

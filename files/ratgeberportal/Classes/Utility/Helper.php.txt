@@ -1,0 +1,190 @@
+<?php
+namespace Igroup\Ratgeberportal\Utility;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2015 Andreas Kraemer <a.kraemer@i-group.de>, igroup Internetagentur
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility as GA;
+
+/**
+ * Helper
+ */
+class Helper implements \TYPO3\CMS\Core\SingletonInterface {
+
+	/**
+	 * Get all subpages on specified menu level starting at startPageUid
+	 * @todo: Select subpages on deepest level. No more subpages = article page. atm too few articles
+	 *
+	 * @param int $startPageUid
+	 * @param int $level
+	 * @return array
+	 */
+	public static function getSubpages($startPageUid, $level) {
+		$pageRepository = GA::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
+		$pageRepository->init(false);
+		// first level
+		$tmpMenu = $mainCategories = $pageRepository->getMenu($startPageUid, 'uid');
+		// further levels
+		for($i = 2; $i <= $level; $i++) {
+			$tmpUidList = self::getUidList($tmpMenu);
+			$tmpMenu = $pageRepository->getMenu($tmpUidList, 'uid');
+		}
+	
+		return $tmpMenu;
+	}
+	
+	/**
+	 * Get all subpages 
+	 *
+	 * @param int $startPageUid
+	 * @return array
+	 */
+	public static function getArticleSubpages($startPageUid, $recursive = 0) {
+		$pageRepository = GA::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
+		$pageRepository->init(false);
+		
+		$pages = [];
+		// get subpages recursively
+		self::_getArticleSubpages($pageRepository, $startPageUid, $pages);
+		
+		$pageUids = [];
+		for($i = 0; $i < count($pages); $i++) {
+			if(0 !== (int)$pages[$i]['categories']) {
+				array_push($pageUids, $pages[$i]['uid']);
+			}
+		}
+		
+		if(count($pageUids) === 0) {
+			if($recursive < 1) {
+				// try going up on the page tree if no article subpages can be found
+				return self::getArticleSubpages($pageRepository->getPage($startPageUid)['pid'], $recursive+1);
+			}
+			return false;
+		}
+		
+		return $pageUids;
+	}
+	
+	/**
+	 * Recursive Child-Function to find all Subpages
+	 * @param TYPO3\CMS\Frontend\Page\PageRepository $repository
+	 * @param int $rootUid
+	 * @param array $pages
+	 * @return void
+	 */
+	private static function _getArticleSubpages($repository, $rootUid, &$pages) {
+		// only standard non-hidden pages
+		$newPages = $repository->getMenu(
+			$rootUid,
+			'uid,categories',
+			'sorting',
+			'AND deleted=0 AND hidden=0 AND nav_hide=0 AND doktype=' . \TYPO3\CMS\Frontend\Page\PageRepository::DOKTYPE_DEFAULT
+		);
+		
+		$pages = array_merge($pages, $newPages);
+		
+		if(!empty($newPages)) {
+			foreach($newPages as $newUid) {
+				// loop recursively
+				self::_getArticleSubpages($repository, $newUid['uid'], $pages);
+			}
+		}
+	}
+	
+	/**
+	 * Create uid array from multi dimensional page array
+	 *
+	 * @param array $pageArray
+	 * @return array
+	 */
+	public static function getUidList(array $pageArray) {
+		$ret = array();
+		foreach($pageArray as $page) {
+			$ret[] = $page['uid'];
+		}
+		return $ret;
+	}
+	
+	/**
+	 * Get 1&1 user
+	 *
+	 * @return int
+	 */
+	public static function getUserId() {
+		// @todo get 1&1 user id from session
+		return 4;
+	}
+	
+	/**
+	 * Check if the given record has been liked by the current user
+	 * @todo cancel immediatly if there is no logged in user
+	 * @param mixed|\Igroup\Ratgeberportal\Domain\Model\Comment|\Igroup\Ratgeberportal\Domain\Model\Article $record
+	 */
+	public static function recordIsLikedByCurrentUser($record, $returnRecord = TRUE) {
+		$currentUserId = self::getUserId();
+		foreach($record->getLikes() as $like) {
+			if($like->getUserId() === $currentUserId) {
+				if($returnRecord) {
+					return $like;
+				} else {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Translate pages
+	 *
+	 * @param array $pages
+	 * @param int $slu sys_language_uid, must be > 0
+	 * @return array
+	 */
+	public static function translatePages($pages, $slu, $shortcut = false) {
+		$translatedPages = [];
+		foreach($pages as $p) {
+
+			// even if shortcuts are selected it might happen, that editors are e.g. choosing a external link as type
+			// -> then we have to get the UID, because no shortcut is available
+			if($shortcut && $p->getShortcut() !== 0) {
+				$uid = $p->getShortcut();
+			} else {
+				$uid = $p->getUid();
+			}
+			$overlay = $GLOBALS['TSFE']->sys_page->getPageOverlay($uid, $slu);
+			if($overlay) {
+				// Set extra fields
+				$overlay['txHiteasermenuImages'] = $p->getTxHiteasermenuImages();
+				$overlay['uid'] = $uid;
+				$overlay['pid'] = $p->getPid();
+				$overlay['crdate'] = $p->getCrdate();
+				
+				$translatedPages[] = $overlay;
+			}
+		}
+		return $translatedPages;
+	}
+}
